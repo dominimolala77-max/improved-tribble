@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Contact Us | Truth Coffee Roasting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/OIP.jpg" type="image/png" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- HEADER & NAVIGATION -->
+  <header class="site-header" id="header">
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
+      </a>
+      <a href="index.html" class="logo-text">TRUTH</a>
+    </div>
+
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="About.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link active">Contact</a>
+      <a href="barista academy.html" class="nav-link">Barista Academy</a>
+      <a href="order.html" class="shop-btn">Shop Now</a>
+    </nav>
+
+    <div class="mobile-toggle" id="mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" style="height: 450px; padding-top: 100px;">
+    <div class="hero-bg" style="background-image: url('49098c8a-c9b0-4c44-aa9f-34d3e15e6668.png');"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">GET IN TOUCH</h1>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section style="padding: var(--section-padding);">
+    <div class="container animate-on-scroll">
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px;">
+
+        <!-- Contact Info -->
+        <div
+          style="background: rgba(31,31,31,0.5); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+          <h2 style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 30px;">CONTACT INFO</h2>
+
+          <div style="margin-bottom: 25px;">
+            <h4 style="color: #fff; font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 10px;">TRUTH
+              HEADQUARTERS</h4>
+            <p style="color: var(--text-muted); line-height: 1.6;">36 Buitenkant Street<br>Cape Town City Centre<br>Cape
+              Town, 8000<br>South Africa</p>
+          </div>
+
+          <div style="margin-bottom: 25px;">
+            <h4 style="color: #fff; font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 10px;">PHONE
+            </h4>
+            <p style="color: var(--text-muted);"><a href="tel:+27212000440"
+                style="color: inherit; text-decoration: none; transition: 0.3s;"
+                onmouseover="this.style.color='var(--accent-gold)'"
+                onmouseout="this.style.color='var(--text-muted)'">+27 21 200 0440</a></p>
+          </div>
+
+          <div style="margin-bottom: 25px;">
+            <h4 style="color: #fff; font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 10px;">EMAIL
+            </h4>
+            <p style="color: var(--text-muted);"><a href="mailto:info@truth.coffee"
+                style="color: inherit; text-decoration: none; transition: 0.3s;"
+                onmouseover="this.style.color='var(--accent-gold)'"
+                onmouseout="this.style.color='var(--text-muted)'">info@truth.coffee</a></p>
+          </div>
+
+          <div>
+            <h4 style="color: #fff; font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 10px;">HOURS
+            </h4>
+            <p style="color: var(--text-muted); line-height: 1.6;">Tuesday - Saturday: 7am - 6pm<br>Sunday: 8am -
+              4pm<br>Monday: Closed</p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 20px;">SEND A MESSAGE</h2>
+          <p style="color: var(--text-muted); margin-bottom: 30px;">Have a question about our beans, wholesale orders,
+            or just want to say hi? Drop us a line.</p>
+
+          <form action="#">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" class="form-control" name="firstName" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" class="form-control" name="lastName" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" name="email" required />
+            </div>
+
+            <div class="form-group" style="margin-bottom: 30px;">
+              <label for="message">Message</label>
+              <textarea id="message" class="form-control" name="message" rows="5" required
+                style="resize: vertical;"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%;">SEND MESSAGE</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div
+    style="display: flex; justify-content: center; width: 100%; padding: 0 20px 60px; background-color: transparent;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.497185570571!2d18.4227736!3d-33.92833840000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc677c90fa4f93%3A0xfb23b9d5b59813f6!2sTruth%20Coffee%20Roasting!5e0!3m2!1sen!2sza!4v1772183630632!5m2!1sen!2sza"
+      width="100%" height="500"
+      style="border:0; max-width: 1200px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <!-- SUBSCRIBE SECTION -->
+  <section class="subscribe-section animate-on-scroll">
+    <div class="subscribe-content">
+      <h2 class="subscribe-title">JOIN THE TRUTH COMMUNITY</h2>
+      <p class="subscribe-desc">And get 10% off your next awesome coffee order.</p>
+
+      <form class="subscribe-form">
+        <input type="email" placeholder="EMAIL ADDRESS" class="subscribe-input" required />
+        <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img src="images/OIP.jpg" alt="Truth Coffee" class="footer-logo">
+        <p class="footer-slogan">COFFEE. ROASTED. PROPERLY.</p>
+        <p class="footer-copy">&copy; Truth Coffee Roasting ZA.<br>e-commerce by WBWR</p>
+      </div>
+
+      <div class="footer-links-col">
+        <h3 class="footer-heading">LINKS</h3>
+        <ul class="footer-links">
+          <li><a href="order.html">SHOP ONLINE</a></li>
+          <li><a href="barista academy.html">BECOME A BARISTA</a></li>
+          <li><a href="About.html">TRUTH COFFEE HQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h3 class="footer-heading">NEED HELP?</h3>
+        <ul class="footer-links">
+          <li><a href="#">REFUND POLICY</a></li>
+          <li><a href="#">SHIPPING POLICY</a></li>
+          <li><a href="contact.html">CONTACT US</a></li>
+          <li><a href="#">PRIVACY POLICY</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social-col">
+        <h3 class="footer-heading">FOLLOW US</h3>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=27642072814&text=Hello, I just visited your website, and I’m interested in your products, and services. Could you please assist me with more information? Thank you."
+            class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- CHAT BOX -->
+  <div class="chat-widget">
+    <i class="far fa-comment"></i>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+
+</html>

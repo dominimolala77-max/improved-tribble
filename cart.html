@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Truth Coffee Roasting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+     <link rel="icon" href="images/OIP.jpg" type="image/png" />
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">TRUTH<br>COFFEE</div>
+                <span class="logo-text">TRUTH</span>
+            </a>
+            
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Barista Academy</a>
+                <a href="#" class="cart-link active">
+                    Cart
+                    <span class="cart-count" id="cartCount">3</span>
+                </a>
+                <a href="#" class="shop-btn">Shop Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 class="page-title">Your Shopping Cart</h1>
+        <p class="page-subtitle">Review your selection of premium African coffees</p>
+
+        <div class="cart-container" id="cartContainer">
+            <!-- Cart items will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" onclick="toggleChat()">
+        <svg viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+        </svg>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Item removed from cart</div>
+
+    <script>
+        // Sample cart data
+        let cart = [
+            {
+                id: 3,
+                name: "Racemosa",
+                weight: "500g",
+                price: 2050.00,
+                quantity: 1,
+            }
+        ];
+
+        function formatPrice(price) {
+            return 'R ' + price.toFixed(2);
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartContainer');
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">☕</div>
+                        <h2>Your cart is empty</h2>
+                        <p>Discover our selection of premium African coffees.</p>
+                        <a href="#" class="shop-now-btn">Start Shopping</a>
+                    </div>
+                `;
+                updateCartCount();
+                return;
+            }
+
+            let itemsHtml = `
+                <div class="cart-header">
+                    <span>Product</span>
+                    <span>Quantity</span>
+                    <span>Price</span>
+                    <span>Total</span>
+                    <span></span>
+                </div>
+            `;
+
+            cart.forEach(item => {
+                itemsHtml += `
+                    <div class="cart-item">
+                        <div class="product-info">
+                            <div class="product-image">${item.image}</div>
+                            <div class="product-details">
+                                <h3>${item.name}</h3>
+                                <span class="weight">${item.weight}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="quantity-control">
+                            <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">−</button>
+                            <input type="number" class="qty-input" value="${item.quantity}" 
+                                   onchange="setQuantity(${item.id}, this.value)" min="1" max="99">
+                            <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                        
+                        <div class="unit-price">${formatPrice(item.price)}</div>
+                        <div class="item-total">${formatPrice(item.price * item.quantity)}</div>
+                        
+                        <button class="remove-btn" onclick="removeItem(${item.id})" title="Remove">×</button>
+                    </div>
+                `;
+            });
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 500 ? 0 : 65;
+            const total = subtotal + shipping;
+
+            itemsHtml += `
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>${formatPrice(subtotal)}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>${shipping === 0 ? 'FREE' : formatPrice(shipping)}</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span>${formatPrice(total)}</span>
+                    </div>
+                    <button class="checkout-btn"<a href="payment checkout.html" onclick="checkout()">Proceed to Checkout</a></button>
+                    <a href="order.html" class="continue-shopping">← Continue Shopping</a>
+                </div>
+            `;
+
+            container.innerHTML = itemsHtml;
+            updateCartCount();
+        }
+
+        function updateQuantity(id, change) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                const newQty = item.quantity + change;
+                if (newQty >= 1) {
+                    item.quantity = newQty;
+                    renderCart();
+                    showToast('Quantity updated');
+                }
+            }
+        }
+
+        function setQuantity(id, value) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                const qty = parseInt(value);
+                if (qty >= 1) {
+                    item.quantity = qty;
+                    renderCart();
+                }
+            }
+        }
+
+        function removeItem(id) {
+            const item = cart.find(i => i.id === id);
+            cart = cart.filter(i => i.id !== id);
+            renderCart();
+            showToast(`${item.name} removed from cart`);
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function checkout() {
+            showToast('Redirecting to secure checkout...');
+        }
+
+        function toggleChat() {
+            showToast('Chat feature coming soon');
+        }
+
+        // Initialize
+        renderCart();
+    </script>
+</body>
+</html>
