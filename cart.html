@@ -1,205 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart - Truth Coffee Roasting</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-     <link rel="icon" href="images/OIP.jpg" type="image/png" />
+  <meta charset="UTF-8" />
+  <title>Your Cart | Truth Coffee Roasting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/OIP.jpg" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
+  <header class="site-header" id="header" style="background: rgba(220, 220, 220, 0.9);">
+    <div class="logo-container">
+      <a href="index.html"><img src="images/OIP.jpg" alt="Logo" class="logo-img" /></a>
+      <a href="index.html" class="logo-text">TRUTH</a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="order.html" class="nav-link">Shop</a>
+      <a href="cart.html" class="nav-link active"><i class="fas fa-shopping-cart"></i> Cart (<span id="cart-count-nav">0</span>)</a>
+    </nav>
+  </header>
 
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">
-                <div class="logo-icon">TRUTH<br>COFFEE</div>
-                <span class="logo-text">TRUTH</span>
-            </a>
-            
-            <nav>
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-                <a href="#">Barista Academy</a>
-                <a href="#" class="cart-link active">
-                    Cart
-                    <span class="cart-count" id="cartCount">3</span>
-                </a>
-                <a href="#" class="shop-btn">Shop Now</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
+  <section style="padding: 150px var(--section-padding) 100px; min-height: 70vh;">
     <div class="container">
-        <h1 class="page-title">Your Shopping Cart</h1>
-        <p class="page-subtitle">Review your selection of premium African coffees</p>
+      <h1 style="color: var(--accent-gold); margin-bottom: 40px; font-family: var(--font-heading);">YOUR SHOPPING CART</h1>
+      
+      <div id="cart-items-container">
+        <!-- Items will be injected here by JS -->
+      </div>
 
-        <div class="cart-container" id="cartContainer">
-            <!-- Cart items will be inserted here -->
+      <div id="cart-summary" style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: right;">
+        <h2 style="color: #211e1e;">Total: <span id="cart-total-price">R 0.00</span></h2>
+        <div style="margin-top: 20px;">
+            <button onclick="clearCart()" class="btn-secondary" style="margin-right: 10px; background: transparent; border: 1px solid #ff4444; color: #ff4444; padding: 10px 20px; cursor: pointer;">Clear Cart</button>
+            <a href="payment checkout.html" class="btn-primary" style="padding: 12px 30px; text-decoration: none; display: inline-block;">PROCEED TO CHECKOUT</a>
         </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Chat Widget -->
-    <div class="chat-widget" onclick="toggleChat()">
-        <svg viewBox="0 0 24 24">
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-        </svg>
-    </div>
+  <script src="script.js"></script>
+  <script>
+    // Specific logic for the cart page display
+    window.addEventListener('DOMContentLoaded', displayCart);
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast">Item removed from cart</div>
-
-    <script>
-        // Sample cart data
-        let cart = [
-            {
-                id: 3,
-                name: "Racemosa",
-                weight: "500g",
-                price: 2050.00,
-                quantity: 1,
-            }
-        ];
-
-        function formatPrice(price) {
-            return 'R ' + price.toFixed(2);
+    function displayCart() {
+        const cart = JSON.parse(localStorage.getItem('truth_cart')) || [];
+        const container = document.getElementById('cart-items-container');
+        const totalElement = document.getElementById('cart-total-price');
+        
+        if (cart.length === 0) {
+            container.innerHTML = '<p style="color: var(--text-muted);">Your cart is empty.</p>';
+            totalElement.innerText = 'R 0.00';
+            return;
         }
 
-        function renderCart() {
-            const container = document.getElementById('cartContainer');
-            
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-cart">
-                        <div class="empty-cart-icon">☕</div>
-                        <h2>Your cart is empty</h2>
-                        <p>Discover our selection of premium African coffees.</p>
-                        <a href="#" class="shop-now-btn">Start Shopping</a>
+        let total = 0;
+        container.innerHTML = cart.map((item, index) => {
+            const itemTotal = parseFloat(item.price.replace('R', '').replace(',', '')) * item.quantity;
+            total += itemTotal;
+            return `
+                <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 20px; margin-bottom: 10px; border-radius: 8px;">
+                    <div>
+                        <h3 style="color: #fff; margin: 0;">${item.name}</h3>
+                        <p style="color: var(--accent-gold); margin: 5px 0 0;">${item.price} x ${item.quantity}</p>
                     </div>
-                `;
-                updateCartCount();
-                return;
-            }
-
-            let itemsHtml = `
-                <div class="cart-header">
-                    <span>Product</span>
-                    <span>Quantity</span>
-                    <span>Price</span>
-                    <span>Total</span>
-                    <span></span>
+                    <div style="text-align: right;">
+                        <p style="color: #fff; font-weight: bold;">R ${itemTotal.toFixed(2)}</p>
+                        <button onclick="removeFromCart(${index})" style="background: none; border: none; color: #ff4444; cursor: pointer; font-size: 0.8rem;">Remove</button>
+                    </div>
                 </div>
             `;
+        }).join('');
+        
+        totalElement.innerText = 'R ' + total.toLocaleString();
+        updateNavCount();
+    }
 
-            cart.forEach(item => {
-                itemsHtml += `
-                    <div class="cart-item">
-                        <div class="product-info">
-                            <div class="product-image">${item.image}</div>
-                            <div class="product-details">
-                                <h3>${item.name}</h3>
-                                <span class="weight">${item.weight}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="quantity-control">
-                            <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">−</button>
-                            <input type="number" class="qty-input" value="${item.quantity}" 
-                                   onchange="setQuantity(${item.id}, this.value)" min="1" max="99">
-                            <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
-                        </div>
-                        
-                        <div class="unit-price">${formatPrice(item.price)}</div>
-                        <div class="item-total">${formatPrice(item.price * item.quantity)}</div>
-                        
-                        <button class="remove-btn" onclick="removeItem(${item.id})" title="Remove">×</button>
-                    </div>
-                `;
-            });
+    function removeFromCart(index) {
+        let cart = JSON.parse(localStorage.getItem('truth_cart')) || [];
+        cart.splice(index, 1);
+        localStorage.setItem('truth_cart', JSON.stringify(cart));
+        displayCart();
+    }
 
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const shipping = subtotal > 500 ? 0 : 65;
-            const total = subtotal + shipping;
-
-            itemsHtml += `
-                <div class="cart-summary">
-                    <div class="summary-row">
-                        <span>Subtotal</span>
-                        <span>${formatPrice(subtotal)}</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Shipping</span>
-                        <span>${shipping === 0 ? 'FREE' : formatPrice(shipping)}</span>
-                    </div>
-                    <div class="summary-row total">
-                        <span>Total</span>
-                        <span>${formatPrice(total)}</span>
-                    </div>
-                    <button class="checkout-btn"<a href="payment checkout.html" onclick="checkout()">Proceed to Checkout</a></button>
-                    <a href="order.html" class="continue-shopping">← Continue Shopping</a>
-                </div>
-            `;
-
-            container.innerHTML = itemsHtml;
-            updateCartCount();
-        }
-
-        function updateQuantity(id, change) {
-            const item = cart.find(i => i.id === id);
-            if (item) {
-                const newQty = item.quantity + change;
-                if (newQty >= 1) {
-                    item.quantity = newQty;
-                    renderCart();
-                    showToast('Quantity updated');
-                }
-            }
-        }
-
-        function setQuantity(id, value) {
-            const item = cart.find(i => i.id === id);
-            if (item) {
-                const qty = parseInt(value);
-                if (qty >= 1) {
-                    item.quantity = qty;
-                    renderCart();
-                }
-            }
-        }
-
-        function removeItem(id) {
-            const item = cart.find(i => i.id === id);
-            cart = cart.filter(i => i.id !== id);
-            renderCart();
-            showToast(`${item.name} removed from cart`);
-        }
-
-        function updateCartCount() {
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cartCount').textContent = count;
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        function checkout() {
-            showToast('Redirecting to secure checkout...');
-        }
-
-        function toggleChat() {
-            showToast('Chat feature coming soon');
-        }
-
-        // Initialize
-        renderCart();
-    </script>
+    function clearCart() {
+        localStorage.removeItem('truth_cart');
+        displayCart();
+    }
+  </script>
 </body>
 </html>
