@@ -183,7 +183,36 @@
         <div class="quantity">
             Quantity: <input type="number" min="0" value="0">
         </div>
-        <button class="add-to-cart-btn" style="margin-top: 10px; width: 100%; padding: 8px; background-color: #c9a962; color: #1a1a1a; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#b8944f'" onmouseout="this.style.backgroundColor='#c9a962'"><a href="waiting time.html">ODER NOW</a></button>
+        <button class="add-to-cart-btn" style="margin-top: 10px; width: 100%; padding: 8px; background-color: #c9a962; color: #1a1a1a; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#b8944f'" onmouseout="this.style.backgroundColor='#c9a962'"><a href="waiting time.html">ODER NOW</a></button><script>
+    document.querySelectorAll('.coffee-card').forEach(card => {
+        const button = card.querySelector('.add-to-cart-btn');
+        if (button && button.innerText.includes('ODER NOW')) {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const name = card.childNodes[4].textContent.trim();
+                const price = card.querySelector('.price').innerText;
+                const image = card.querySelector('img').src;
+                const quantityInput = card.querySelector('input[type="number"]');
+                const quantity = parseInt(quantityInput.value) || 1;
+
+                if (quantity > 0) {
+                    const orderItem = {
+                        name: name,
+                        price: price,
+                        image: image,
+                        quantity: quantity
+                    };
+                    // Store as a single-item array to be compatible with waiting time.html logic
+                    localStorage.setItem('truth_cart', JSON.stringify([orderItem]));
+                    window.location.href = 'waiting time.html';
+                } else {
+                    alert('Please select a quantity greater than 0');
+                }
+            });
+        }
+    });
+</script>
+
     </div>
 
     <div class="coffee-card1">
@@ -203,7 +232,12 @@
 
             <form class="subscribe-form">
                 <input type="email" placeholder="EMAIL ADDRESS" class="subscribe-input" required />
-                   <button type="submit" class="btn-subscribe"><a href="subscribtion.html">SUBSCRIBE</a></button>
+                   <button type="submit" class="btn-subscribe"><a href="subscribtion.html">SUBSCRIBE</a></button><script>
+                    document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        window.location.href = 'subscribtion.html';
+                    });
+                </script>
             </form>
         </div>
     </section>
@@ -233,7 +267,7 @@
                     <li><a href="#">REFUND POLICY</a></li>
                     <li><a href="#">SHIPPING POLICY</a></li>
                     <li><a href="contact.html">CONTACT US</a></li>
-                    <li><a href="#">PRIVACY POLICY</a></li>
+                    <li><a href="Privacy policy.html">PRIVACY POLICY</a></li>
                 </ul>
             </div>
 
