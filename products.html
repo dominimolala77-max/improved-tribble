@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Products - Improved Tribble</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f9f9f9; }
+    h1 { text-align: center; color: #333; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .product-card:hover { transform: translateY(-8px); }
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 16px;
+    }
+    .product-info h2 { margin: 0 0 8px; font-size: 1.4rem; }
+    .price { font-size: 1.6rem; font-weight: bold; color: #e63946; margin: 8px 0; }
+    .category { color: #666; font-size: 0.95rem; }
+    .stock { margin-top: 12px; font-weight: 500; }
+    .in-stock { color: #2a9d8e; }
+    .out-of-stock { color: #e63946; }
+    .loading { text-align: center; font-size: 1.2rem; color: #666; }
+    .error { color: red; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <h1>Our Products</h1>
+  <div id="loading" class="loading">Loading products from Sanity...</div>
+  <div id="products" class="products-grid"></div>
+  <div id="error" class="error" style="display: none;"></div>
+
+  <script>
+    // === CONFIGURE THESE ===
+    const PROJECT_ID = 'p5bp831g';   // ← Replace with your actual projectId
+    const DATASET = 'production';
+    const API_VERSION = 'v2026-03-17';            // Current as of 2026
+
+    // GROQ Query - fetches exactly the fields from your Product schema
+    const QUERY = encodeURIComponent(`
+      *[_type == "product"] | order(_createdAt desc) {
+        _id,
+        name,
+        slug,
+        price,
+        description,
+        inStock,
+        stockQuantity,
+        "images": images[].asset->url,
+        category-> { name }
+      }
+    `);
+
+    const url = `https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${QUERY}`;
+
+    async function fetchProducts() {
+      const loadingEl = document.getElementById('loading');
+      const productsEl = document.getElementById('products');
+      const errorEl = document.getElementById('error');
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Failed to fetch from Sanity');
+
+        const json = await response.json();
+        const products = json.result || [];
+
+        loadingEl.style.display = 'none';
+
+        if (products.length === 0) {
+          productsEl.innerHTML = '<p style="grid-column: 1/-1; text-align:center;">No products found yet. Add some in Sanity Studio!</p>';
+          return;
+        }
+
+        products.forEach(product => {
+          const card = document.createElement('div');
+          card.className = 'product-card';
+
+          const imageUrl = product.images && product.images[0] 
+            ? product.images[0] 
+            : 'https://via.placeholder.com/400x220?text=No+Image';
+
+          card.innerHTML = `
+            <img src="${imageUrl}" alt="${product.name}">
+            <div class="product-info">
+              <h2>${product.name}</h2>
+              ${product.category ? `<p class="category">${product.category.name}</p>` : ''}
+              <p class="price">$${product.price}</p>
+              <p>${product.description ? product.description.substring(0, 120) + '...' : ''}</p>
+              
+              <p class="stock ${product.inStock ? 'in-stock' : 'out-of-stock'}">
+                ${product.inStock 
+                  ? `✓ In Stock (${product.stockQuantity || 'Many'})` 
+                  : 'Out of Stock'}
+              </p>
+            </div>
+          `;
+          productsEl.appendChild(card);
+        });
+
+      } catch (err) {
+        console.error(err);
+        loadingEl.style.display = 'none';
+        errorEl.textContent = 'Error loading products. Check your Project ID and internet connection.';
+        errorEl.style.display = 'block';
+      }
+    }
+
+    // Run when page loads
+    window.onload = fetchProducts;
+  </script>
+
+</body>
+</html>
