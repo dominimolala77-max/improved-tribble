@@ -4,6 +4,7 @@ export const product = defineType({
   name: 'product',
   title: 'Product',
   type: 'document',
+  
   fields: [
     defineField({
       name: 'name',
@@ -11,6 +12,16 @@ export const product = defineType({
       type: 'string',
       validation: (Rule) => Rule.required().min(3).max(100),
     }),
+
+    defineField({
+  name: 'image',
+  title: 'Product Image',
+  type: 'image',
+  options: {
+    hotspot: true
+  }
+}),
+
     defineField({
       name: 'slug',
       title: 'Slug',
@@ -23,7 +34,7 @@ export const product = defineType({
     }),
     defineField({
       name: 'price',
-      title: 'Price (USD)',
+      title: 'Price (ZAR)',
       type: 'number',
       validation: (Rule) => Rule.required().min(0),
     }),
