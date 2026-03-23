@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Single Servings | Truth Coffee Roasting</title>
-  <meta name="description" content="Shop Truth Coffee Roasting's single-serve coffee essentials — capsules, pour-over sachets and more. Delivered to your door." />
+  <meta name="description"
+    content="Shop Truth Coffee Roasting's single-serve coffee essentials — capsules, pour-over sachets and more. Delivered to your door." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/OIP.jpg" type="image/png" />
@@ -51,22 +52,31 @@
       <div class="product-card skeleton-card" id="skeleton-1">
         <div class="product-image-container" style="background:#e9e9e9; animation: pulse 1.5s infinite;"></div>
         <div class="product-info">
-          <div style="height:16px; background:#e0e0e0; border-radius:4px; margin-bottom:8px; animation: pulse 1.5s infinite;"></div>
-          <div style="height:14px; background:#e0e0e0; border-radius:4px; width:60%; animation: pulse 1.5s infinite;"></div>
+          <div
+            style="height:16px; background:#e0e0e0; border-radius:4px; margin-bottom:8px; animation: pulse 1.5s infinite;">
+          </div>
+          <div style="height:14px; background:#e0e0e0; border-radius:4px; width:60%; animation: pulse 1.5s infinite;">
+          </div>
         </div>
       </div>
       <div class="product-card skeleton-card" id="skeleton-2">
         <div class="product-image-container" style="background:#e9e9e9; animation: pulse 1.5s infinite;"></div>
         <div class="product-info">
-          <div style="height:16px; background:#e0e0e0; border-radius:4px; margin-bottom:8px; animation: pulse 1.5s infinite;"></div>
-          <div style="height:14px; background:#e0e0e0; border-radius:4px; width:60%; animation: pulse 1.5s infinite;"></div>
+          <div
+            style="height:16px; background:#e0e0e0; border-radius:4px; margin-bottom:8px; animation: pulse 1.5s infinite;">
+          </div>
+          <div style="height:14px; background:#e0e0e0; border-radius:4px; width:60%; animation: pulse 1.5s infinite;">
+          </div>
         </div>
       </div>
       <div class="product-card skeleton-card" id="skeleton-3">
         <div class="product-image-container" style="background:#e9e9e9; animation: pulse 1.5s infinite;"></div>
         <div class="product-info">
-          <div style="height:16px; background:#e0e0e0; border-radius:4px; margin-bottom:8px; animation: pulse 1.5s infinite;"></div>
-          <div style="height:14px; background:#e0e0e0; border-radius:4px; width:60%; animation: pulse 1.5s infinite;"></div>
+          <div
+            style="height:16px; background:#e0e0e0; border-radius:4px; margin-bottom:8px; animation: pulse 1.5s infinite;">
+          </div>
+          <div style="height:14px; background:#e0e0e0; border-radius:4px; width:60%; animation: pulse 1.5s infinite;">
+          </div>
         </div>
       </div>
 
@@ -74,7 +84,8 @@
 
     <!-- Fallback message (shown if Sanity returns no products) -->
     <div id="no-products-msg" style="display:none; text-align:center; padding: 60px 20px; color:#666;">
-      <p style="font-size:1.1rem;">No products found. Add some in the <a href="http://localhost:3333" target="_blank" style="color:#c9a86a;">Sanity Studio</a>.</p>
+      <p style="font-size:1.1rem;">No products found. Add some in the <a href="http://localhost:3333" target="_blank"
+          style="color:#c9a86a;">Sanity Studio</a>.</p>
     </div>
   </section>
 
@@ -133,9 +144,17 @@
 
   <style>
     @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.4; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
     }
+
     .skeleton-card .product-image-container {
       min-height: 260px;
     }
@@ -147,18 +166,18 @@
     // projectId and dataset must match your studio/sanity.config.ts
     // ─────────────────────────────────────────────────────────────────
     const SANITY_PROJECT_ID = 'p5bp831g';
-    const SANITY_DATASET     = 'production';
+    const SANITY_DATASET = 'production';
     const SANITY_API_VERSION = '2024-01-01';
 
     // Build a Sanity image URL from a reference object
     function sanityImageUrl(imageRef, width = 600) {
       if (!imageRef || !imageRef.asset || !imageRef.asset._ref) return '';
       // Ref format: image-<id>-<dimensions>-<format>
-      const ref   = imageRef.asset._ref;
+      const ref = imageRef.asset._ref;
       const parts = ref.split('-');  // ['image', id, dims, format]
-      const id      = parts[1];
-      const dims    = parts[2];
-      const format  = parts[3];
+      const id = parts[1];
+      const dims = parts[2];
+      const format = parts[3];
       return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dims}.${format}?w=${width}&auto=format&fit=max`;
     }
 
@@ -182,7 +201,7 @@
       const grid = document.getElementById('essentials-grid');
 
       try {
-        const res  = await fetch(SANITY_URL);
+        const res = await fetch(SANITY_URL);
         const data = await res.json();
         const products = data.result || [];
 
@@ -196,7 +215,7 @@
 
         products.forEach(product => {
           const imgUrl = sanityImageUrl(product.image, 600);
-          const price  = typeof product.price === 'number'
+          const price = typeof product.price === 'number'
             ? `R ${product.price.toLocaleString('en-ZA', { minimumFractionDigits: 2 })}`
             : 'Price on request';
 
@@ -222,7 +241,7 @@
               <p class="product-price">${price}</p>
               <button
                 class="btn-quiz"
-                onclick="addToCart('${product.name.replace(/'/g,"\\'")}', '${price}', '${imgUrl}', event)"
+                onclick="addToCart('${product.name.replace(/'/g, "\\'")}', '${price}', '${imgUrl}', event)"
               ><a href="#">ADD TO CART</a></button>
             </div>
           `;
@@ -237,10 +256,10 @@
 
         const fallbackProducts = [
           { name: 'Relativity Blend Coffee Capsules (50 Caps)', price: 'R 520.00', img: 'images/Truth_Photoshoot_SingleUseCoffee_BlackHoney_1500x1500_3-4FrontPods.webp', badge: 'NEW' },
-          { name: 'Black Honey Coffee Capsules (50 Caps)',       price: 'R 560.00', img: 'images/Truth_Photoshoot_SingleUseCoffee_BlackHoney50_1500x1500_3-4FrontPods.webp', badge: 'NEW' },
-          { name: 'Black Honey Pour-Over Sachet',                price: 'R 270.00', img: 'images/2.webp',                                                                   badge: ''    },
-          { name: 'Relativity Blend Coffee Capsules (10 Caps)', price: 'R 115.00', img: 'images/6MonthSubscription.webp',                                                  badge: ''    },
-          { name: 'Black Honey Coffee Capsules (10 Caps)',       price: 'R 120.00', img: 'images/Truth_Photoshoot_SingleUseCoffee_Relativity_1500x1500_3-4FrontPods_831021a7-476f-4874-9e30-bdda5f997cbf.webp', badge: '' },
+          { name: 'Black Honey Coffee Capsules (50 Caps)', price: 'R 560.00', img: 'images/Truth_Photoshoot_SingleUseCoffee_BlackHoney50_1500x1500_3-4FrontPods.webp', badge: 'NEW' },
+          { name: 'Black Honey Pour-Over Sachet', price: 'R 270.00', img: 'images/2.webp', badge: '' },
+          { name: 'Relativity Blend Coffee Capsules (10 Caps)', price: 'R 115.00', img: 'images/6MonthSubscription.webp', badge: '' },
+          { name: 'Black Honey Coffee Capsules (10 Caps)', price: 'R 120.00', img: 'images/Truth_Photoshoot_SingleUseCoffee_Relativity_1500x1500_3-4FrontPods_831021a7-476f-4874-9e30-bdda5f997cbf.webp', badge: '' },
           { name: 'Antithesis Decaf Coffee Capsules (10 Caps)', price: 'R 125.00', img: 'images/Truth_Photoshoot_SingleUseCoffee_AntihesisDecaf_1500x1500_3-4FrontPods.webp', badge: '' },
         ];
 
@@ -256,7 +275,7 @@
             <div class="product-info">
               <h3 class="product-title">${p.name}</h3>
               <p class="product-price">${p.price}</p>
-              <button class="btn-quiz" onclick="addToCart('${p.name.replace(/'/g,"\\'")}','${p.price}','${p.img}',event)"><a href="#">ADD TO CART</a></button>
+              <button class="btn-quiz" onclick="addToCart('${p.name.replace(/'/g, "\\'")}','${p.price}','${p.img}',event)"><a href="#">ADD TO CART</a></button>
             </div>
           `;
           grid.appendChild(card);

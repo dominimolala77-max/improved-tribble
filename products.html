@@ -1,130 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Products - Improved Tribble</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; background: #f9f9f9; }
-    h1 { text-align: center; color: #333; }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-    .product-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    .product-card:hover { transform: translateY(-8px); }
-    .product-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-    .product-info {
-      padding: 16px;
-    }
-    .product-info h2 { margin: 0 0 8px; font-size: 1.4rem; }
-    .price { font-size: 1.6rem; font-weight: bold; color: #e63946; margin: 8px 0; }
-    .category { color: #666; font-size: 0.95rem; }
-    .stock { margin-top: 12px; font-weight: 500; }
-    .in-stock { color: #2a9d8e; }
-    .out-of-stock { color: #e63946; }
-    .loading { text-align: center; font-size: 1.2rem; color: #666; }
-    .error { color: red; text-align: center; }
-  </style>
-</head>
-<body>
 
-  <h1>Our Products</h1>
-  <div id="loading" class="loading">Loading products from Sanity...</div>
-  <div id="products" class="products-grid"></div>
-  <div id="error" class="error" style="display: none;"></div>
+<head>
+  <meta charset="UTF-8" />
+  <title>Cup Collection | Truth Coffee Roasting</title>
+  <meta name="description" content="Explore Truth Coffee Roasting's exclusive cup collection. Artisan vessels for the perfect brew." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/OIP.jpg" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body class="light-theme">
+  <!-- HEADER & NAVIGATION -->
+  <header class="site-header scrolled" id="header"
+    style="background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
+      </a>
+      <a href="index.html" class="logo-text" style="color:#000;">TRUTH</a>
+    </div>
+
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html" class="nav-link" style="color:#000;">Home</a>
+      <a href="About.html" class="nav-link" style="color:#000;">About</a>
+      <a href="contact.html" class="nav-link" style="color:#000;">Contact</a>
+      <a href="intoproduct.html" class="nav-link active" style="color:#000;">Shop</a>
+      <a href="order.html" class="shop-btn">Shop Now</a>
+      <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> (<span id="cart-count-nav">0</span>)</a>
+    </nav>
+
+    <div class="mobile-toggle" id="mobile-toggle">
+      <span style="background: #000;"></span>
+      <span style="background: #000;"></span>
+      <span style="background: #000;"></span>
+    </div>
+  </header>
+
+  <!-- PRODUCTS GRID SECTION -->
+  <section class="products-section">
+    <div class="products-header">
+      <h1 class="products-main-title">CUP COLLECTION</h1>
+    </div>
+
+    <!-- Live grid — populated by Sanity fetch below -->
+    <div class="products-grid" id="cups-grid">
+
+      <!-- Loading skeleton cards -->
+      <div class="product-card skeleton-card" id="skeleton-1">
+        <div class="product-image-container skeleton"></div>
+        <div class="product-info">
+          <div class="skeleton" style="height:16px; border-radius:4px; margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:14px; border-radius:4px; width:60%;"></div>
+        </div>
+      </div>
+      <div class="product-card skeleton-card" id="skeleton-2">
+        <div class="product-image-container skeleton"></div>
+        <div class="product-info">
+          <div class="skeleton" style="height:16px; border-radius:4px; margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:14px; border-radius:4px; width:60%;"></div>
+        </div>
+      </div>
+      <div class="product-card skeleton-card" id="skeleton-3">
+        <div class="product-image-container skeleton"></div>
+        <div class="product-info">
+          <div class="skeleton" style="height:16px; border-radius:4px; margin-bottom:8px;"></div>
+          <div class="skeleton" style="height:14px; border-radius:4px; width:60%;"></div>
+        </div>
+      </div>
+
+    </div><!-- /#cups-grid -->
+
+    <!-- Fallback message (shown if Sanity returns no products) -->
+    <div id="no-products-msg" style="display:none; text-align:center; padding: 60px 20px; color:#666;">
+      <p style="font-size:1.1rem;">No cups found. Add some in the <a href="http://localhost:3333" target="_blank"
+          style="color:#c9a86a;">Sanity Studio</a>.</p>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE SECTION -->
+  <section class="subscribe-section animate-on-scroll">
+    <div class="subscribe-content">
+      <h2 class="subscribe-title">JOIN THE TRUTH COMMUNITY</h2>
+      <p class="subscribe-desc">And get 10% off your next awesome coffee order.</p>
+      <form class="subscribe-form" id="subscribe-form-cups">
+        <input type="email" placeholder="EMAIL ADDRESS" class="subscribe-input" required />
+        <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/OIP.jpg" alt="Truth Coffee" class="footer-logo">
+        <p class="footer-slogan">COFFEE. ROASTED. PROPERLY.</p>
+        <p class="footer-copy">&copy; Truth Coffee Roasting ZA.<br>e-commerce by WBWR</p>
+      </div>
+      <div class="footer-links-col">
+        <h3 class="footer-heading">LINKS</h3>
+        <ul class="footer-links">
+          <li><a href="order.html">SHOP ONLINE</a></li>
+          <li><a href="barista academy.html">BECOME A BARISTA</a></li>
+          <li><a href="About.html">TRUTH COFFEE HQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h3 class="footer-heading">NEED HELP?</h3>
+        <ul class="footer-links">
+          <li><a href="returns and refunds.html">REFUND POLICY</a></li>
+          <li><a href="#">SHIPPING POLICY</a></li>
+          <li><a href="contact.html">CONTACT US</a></li>
+          <li><a href="Privacy policy.html">PRIVACY POLICY</a></li>
+        </ul>
+      </div>
+      <div class="footer-social-col">
+        <h3 class="footer-heading">FOLLOW US</h3>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=27642072814" class="social-link"><i
+              class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
 
   <script>
-    // === CONFIGURE THESE ===
-    const PROJECT_ID = 'p5bp831g';   // ← Replace with your actual projectId
-    const DATASET = 'production';
-    const API_VERSION = 'v2026-03-17';            // Current as of 2026
+    // ─────────────────────────────────────────────────────────────────
+    // SANITY CONFIG
+    // ─────────────────────────────────────────────────────────────────
+    const SANITY_PROJECT_ID = 'p5bp831g';
+    const SANITY_DATASET = 'production';
+    const SANITY_API_VERSION = '2024-01-01';
 
-    // GROQ Query - fetches exactly the fields from your Product schema
-    const QUERY = encodeURIComponent(`
-      *[_type == "product"] | order(_createdAt desc) {
+    // Build a Sanity image URL from a reference object
+    function sanityImageUrl(imageRef, width = 600) {
+      if (!imageRef || !imageRef.asset || !imageRef.asset._ref) return '';
+      const ref = imageRef.asset._ref;
+      const parts = ref.split('-');
+      const id = parts[1];
+      const dims = parts[2];
+      const format = parts[3];
+      return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dims}.${format}?w=${width}&auto=format&fit=max`;
+    }
+
+    // GROQ query — fetch all available cups docs
+    const QUERY = encodeURIComponent(
+      `*[_type == "cups"] | order(_createdAt desc) {
         _id,
         name,
-        slug,
         price,
-        description,
-        inStock,
-        stockQuantity,
-        "images": images[].asset->url,
-        category-> { name }
-      }
-    `);
+        image,
+        description
+      }`
+    );
 
-    const url = `https://${PROJECT_ID}.api.sanity.io/v${API_VERSION}/data/query/${DATASET}?query=${QUERY}`;
+    const SANITY_URL = `https://${SANITY_PROJECT_ID}.api.sanity.io/v${SANITY_API_VERSION}/data/query/${SANITY_DATASET}?query=${QUERY}`;
 
-    async function fetchProducts() {
-      const loadingEl = document.getElementById('loading');
-      const productsEl = document.getElementById('products');
-      const errorEl = document.getElementById('error');
+    // ── Render products from Sanity ─────────────────────────────────
+    async function loadCups() {
+      const grid = document.getElementById('cups-grid');
 
       try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Failed to fetch from Sanity');
+        const res = await fetch(SANITY_URL);
+        const data = await res.json();
+        const products = data.result || [];
 
-        const json = await response.json();
-        const products = json.result || [];
-
-        loadingEl.style.display = 'none';
+        // Remove skeleton cards
+        grid.querySelectorAll('.skeleton-card').forEach(el => el.remove());
 
         if (products.length === 0) {
-          productsEl.innerHTML = '<p style="grid-column: 1/-1; text-align:center;">No products found yet. Add some in Sanity Studio!</p>';
+          document.getElementById('no-products-msg').style.display = 'block';
           return;
         }
 
         products.forEach(product => {
+          const imgUrl = sanityImageUrl(product.image, 600);
+          const priceStr = typeof product.price === 'number' ? `R ${product.price}` : 'R 0';
+
           const card = document.createElement('div');
           card.className = 'product-card';
-
-          const imageUrl = product.images && product.images[0] 
-            ? product.images[0] 
-            : 'https://via.placeholder.com/400x220?text=No+Image';
-
           card.innerHTML = `
-            <img src="${imageUrl}" alt="${product.name}">
+            <div class="product-image-container">
+              <img src="${imgUrl}" alt="${product.name}" class="product-image" loading="lazy" />
+            </div>
             <div class="product-info">
-              <h2>${product.name}</h2>
-              ${product.category ? `<p class="category">${product.category.name}</p>` : ''}
-              <p class="price">$${product.price}</p>
-              <p>${product.description ? product.description.substring(0, 120) + '...' : ''}</p>
-              
-              <p class="stock ${product.inStock ? 'in-stock' : 'out-of-stock'}">
-                ${product.inStock 
-                  ? `✓ In Stock (${product.stockQuantity || 'Many'})` 
-                  : 'Out of Stock'}
-              </p>
+              <h3 class="product-name">${product.name}</h3>
+              <p class="product-price">${priceStr}</p>
+              <button class="btn-add" onclick="addToCart('${product.name.replace(/'/g, "\\'")}', '${priceStr}', '${imgUrl}', event)">
+                ADD TO CART
+              </button>
             </div>
           `;
-          productsEl.appendChild(card);
+          grid.appendChild(card);
         });
 
       } catch (err) {
-        console.error(err);
-        loadingEl.style.display = 'none';
-        errorEl.textContent = 'Error loading products. Check your Project ID and internet connection.';
-        errorEl.style.display = 'block';
+        console.error('Failed to load cups from Sanity:', err);
+        grid.querySelectorAll('.skeleton-card').forEach(el => el.remove());
+        document.getElementById('no-products-msg').style.display = 'block';
       }
     }
 
-    // Run when page loads
-    window.onload = fetchProducts;
+    // ── Subscribe form ──────────────────────────────────────────────
+    const subForm = document.getElementById('subscribe-form-cups');
+    if(subForm) {
+      subForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        window.location.href = 'subscribtion.html';
+      });
+    }
+
+    // Kick off on page load
+    loadCups();
   </script>
 
 </body>
+
 </html>

@@ -5,6 +5,7 @@ import { bakeryItem }       from './bakeryItem'
 import { coffeeEssential }  from './coffeeEssential'
 import { beanToCup }        from './beanToCup'
 import { brewingEquipment } from './brewingEquipment'
+import { cups }             from './cups'
 
 export const schemaTypes = [
   product,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   coffeeEssential,
   beanToCup,
   brewingEquipment,
+  cups,
 ]

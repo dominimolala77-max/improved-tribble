@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Rogbold";
+  src: url(Rogbold-3llGM.woff);
+}
+
+@font-face {
+  font-family: "Carme";
+  src: url(Carme-Regular.woff);
+}
+
+* {
+  border:red solid 1px
+}
+
+.carme {
+  font-family: "Carme";
+}
+
+.rogbold {
+  font-family: "Rogbold";
+}
+
+.no-scrollbar::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar,
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
