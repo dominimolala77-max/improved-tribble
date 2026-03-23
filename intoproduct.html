@@ -51,14 +51,14 @@
         <div class="product-image-container">
           <span class="product-badge">NEW</span>
           <button class="product-wishlist"><i class="far fa-heart"></i></button>
-          <img
-            src="images/photo-1559525839-b184a4d698c7.avif"
-            alt="Limited Edition Racemosa" class="product-image" />
+          <img src="images/photo-1559525839-b184a4d698c7.avif" alt="Limited Edition Racemosa" class="product-image" />
         </div>
         <div class="product-info">
           <h3 class="product-title">Limited Edition Racemosa</h3>
           <p class="product-price">R 2,050.00</p>
-          <button class="btn-quiz" onclick="addToCart('Limited Edition Racemosa', 'R 2,050.00', 'images/photo-1559525839-b184a4d698c7.avif', event)"><a href="#">ADD TO CART</a></button>
+          <button class="btn-quiz"
+            onclick="addToCart('Limited Edition Racemosa', 'R 2,050.00', 'images/photo-1559525839-b184a4d698c7.avif', event)"><a
+              href="#">ADD TO CART</a></button>
         </div>
       </div>
 
@@ -66,23 +66,22 @@
       <div class="product-card">
         <div class="product-image-container">
           <button class="product-wishlist"><i class="far fa-heart"></i></button>
-          <img
-            src="images/photo-1611162458324-aae1eb4129a4.avif"
-            alt="6 Month Multi-Variant Coffee Subscription" class="product-image" />
+          <img src="images/photo-1611162458324-aae1eb4129a4.avif" alt="6 Month Multi-Variant Coffee Subscription"
+            class="product-image" />
         </div>
         <div class="product-info">
           <h3 class="product-title">6 Month Multi-Variant Coffee Subscription</h3>
           <p class="product-price">R 1,450.00</p>
-          <button class="btn-quiz" onclick="subscribtion('6 Month Multi-Variant Coffee Subscription', 'R 1,450.00', 'images/photo-1611162458324-aae1eb4129a4.avif', event)"><a href="subscribtion.html">SUBSCRIBE NOW</a></button>
+          <button class="btn-quiz"
+            onclick="subscribtion('6 Month Multi-Variant Coffee Subscription', 'R 1,450.00', 'images/photo-1611162458324-aae1eb4129a4.avif', event)"><a
+              href="subscribtion.html">SUBSCRIBE NOW</a></button>
         </div>
       </div>
 
       <!-- Product 3: Quiz Card -->
       <div class="product-card quiz-card">
         <div class="product-image-container">
-          <img
-            src="images/photo-1611162458324-aae1eb4129a4.avif"
-            alt="Coffee Brewing" class="quiz-card-img" />
+          <img src="images/photo-1611162458324-aae1eb4129a4.avif" alt="Coffee Brewing" class="quiz-card-img" />
           <div class="quiz-content">
             <h2 class="quiz-title">FIND YOUR<br>PERFECT BREW</h2>
             <p class="quiz-desc">BROWSE OUR NATURAL RAW COFFEE, AND WE'LL MATCH YOU WITH THE PERFECT ROAST.</p>
@@ -90,7 +89,7 @@
           </div>
         </div>
         <div class="product-info">
-          <h3 class="product-title quiz-info-title">TAKE THE QUIZ NOW</h3>
+          <h3 class="product-title quiz-info-title">TAKE YOUR COFFEE NOW</h3>
           <p class="product-price">Ready to meet your match?</p>
         </div>
       </div>
@@ -105,12 +104,13 @@
 
       <form class="subscribe-form">
         <input type="email" placeholder="EMAIL ADDRESS" class="subscribe-input" required />
-           <button type="submit" class="btn-subscribe"><a href="subscribtion.html">SUBSCRIBE</a></button><script>
-                    document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        window.location.href = 'subscribtion.html';
-                    });
-                </script>
+        <button type="submit" class="btn-subscribe"><a href="subscribtion.html">SUBSCRIBE</a></button>
+        <script>
+          document.querySelector('.subscribe-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            window.location.href = 'subscribtion.html';
+          });
+        </script>
       </form>
     </div>
   </section>

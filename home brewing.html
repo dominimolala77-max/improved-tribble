@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>HOME BREWING | Truth Coffee Roasting</title>
+  <meta name="description"
+    content="Shop Truth Coffee Roasting's home brewing equipment — Hario V60, Chemex, AeroPress and more. Everything you need to brew properly at home." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/OIP.jpg" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* Skeleton Pulse Animation */
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    .skeleton-card .product-image-container {
+      min-height: 280px;
+      background: #e9e9e9;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .skeleton-bar {
+      height: 14px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 40px 5% 0;
+      background: transparent;
+    }
+
+    .filter-tab {
+      background: transparent;
+      border: 1px solid rgba(201, 168, 106, 0.3);
+      color: var(--text-secondary);
+      padding: 8px 22px;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .filter-tab:hover,
+    .filter-tab.active {
+      background: var(--accent-gold);
+      color: #000;
+      border-color: var(--accent-gold);
+    }
+  </style>
+</head>
+
+<body class="light-theme">
+  <!-- HEADER & NAVIGATION -->
+  <header class="site-header scrolled" id="header"
+    style="background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid rgba(0,0,0,0.05);">
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
+      </a>
+      <a href="index.html" class="logo-text" style="color:#000;">TRUTH</a>
+    </div>
+
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html" class="nav-link" style="color:#000;">Home</a>
+      <a href="About.html" class="nav-link" style="color:#000;">About</a>
+      <a href="contact.html" class="nav-link" style="color:#000;">Contact</a>
+      <a href="intoproduct.html" class="nav-link active" style="color:#000;">Shop</a>
+      <a href="order.html" class="shop-btn">Shop Now</a>
+      <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> (<span id="cart-count-nav">0</span>)</a>
+    </nav>
+
+    <div class="mobile-toggle" id="mobile-toggle">
+      <span style="background: #000;"></span>
+      <span style="background: #000;"></span>
+      <span style="background: #000;"></span>
+    </div>
+  </header>
+
+  <!-- PRODUCTS GRID SECTION -->
+  <section class="products-section">
+    <div class="products-header">
+      <h1 class="products-main-title">HOME BREWING</h1>
+    </div>
+
+    <!--
+     <div class="filter-tabs" id="filter-tabs">
+        <button class="filter-tab active" data-category="all">All</button>
+        <button class="filter-tab" data-category="pour-over">Pour Over</button>
+        <button class="filter-tab" data-category="french-press">French Press</button>
+        <button class="filter-tab" data-category="maker">Makers</button>
+        <button class="filter-tab" data-category="grinders">Grinders</button>
+        <button class="filter-tab" data-category="accessories">Accessories</button>
+    </div>
+    -->
+
+    <div class="products-grid" id="brewing-grid">
+      <!-- Skeleton Loaders -->
+      <div class="product-card skeleton-card">
+        <div class="product-image-container"></div>
+        <div class="product-info">
+          <div class="skeleton-bar" style="width:70%;"></div>
+          <div class="skeleton-bar" style="width:40%;"></div>
+        </div>
+      </div>
+      <div class="product-card skeleton-card">
+        <div class="product-image-container"></div>
+        <div class="product-info">
+          <div class="skeleton-bar" style="width:70%;"></div>
+          <div class="skeleton-bar" style="width:40%;"></div>
+        </div>
+      </div>
+      <div class="product-card skeleton-card">
+        <div class="product-image-container"></div>
+        <div class="product-info">
+          <div class="skeleton-bar" style="width:70%;"></div>
+          <div class="skeleton-bar" style="width:40%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="no-products" style="display:none; text-align:center; padding:100px; color:var(--text-muted);">
+      <p>No equipment found in this category.</p>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE SECTION -->
+  <section class="subscribe-section animate-on-scroll">
+    <div class="subscribe-content">
+      <h2 class="subscribe-title">JOIN THE TRUTH COMMUNITY</h2>
+      <p class="subscribe-desc">And get 10% off your next awesome coffee order.</p>
+      <form class="subscribe-form" id="subscribe-form">
+        <input type="email" placeholder="EMAIL ADDRESS" class="subscribe-input" required />
+        <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="images/OIP.jpg" alt="Truth Coffee" class="footer-logo">
+        <p class="footer-slogan">COFFEE. ROASTED. PROPERLY.</p>
+        <p class="footer-copy">&copy; Truth Coffee Roasting ZA.<br>e-commerce by WBWR</p>
+      </div>
+      <div class="footer-links-col">
+        <h3 class="footer-heading">LINKS</h3>
+        <ul class="footer-links">
+          <li><a href="order.html">SHOP ONLINE</a></li>
+          <li><a href="barista academy.html">BECOME A BARISTA</a></li>
+          <li><a href="About.html">TRUTH COFFEE HQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h3 class="footer-heading">NEED HELP?</h3>
+        <ul class="footer-links">
+          <li><a href="#">REFUND POLICY</a></li>
+          <li><a href="#">SHIPPING POLICY</a></li>
+          <li><a href="contact.html">CONTACT US</a></li>
+          <li><a href="Privacy policy.html">PRIVACY POLICY</a></li>
+        </ul>
+      </div>
+      <div class="footer-social-col">
+        <h3 class="footer-heading">FOLLOW US</h3>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=27642072814" class="social-link"><i
+              class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const SANITY_PROJECT_ID = 'p5bp831g';
+    const SANITY_DATASET = 'production';
+    const SANITY_API_VERSION = '2024-01-01';
+
+    function sanityImageUrl(imageRef, width = 600) {
+      if (!imageRef?.asset?._ref) return '';
+      const ref = imageRef.asset._ref;
+      const parts = ref.split('-');
+      const id = parts[1];
+      const dims = parts[2];
+      const format = parts[3];
+      return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dims}.${format}?w=${width}&auto=format&fit=max`;
+    }
+
+    const QUERY = encodeURIComponent('*[_type == "brewingEquipment" && available == true] | order(sortOrder asc)');
+    const URL = `https://${SANITY_PROJECT_ID}.api.sanity.io/v${SANITY_API_VERSION}/data/query/${SANITY_DATASET}?query=${QUERY}`;
+
+    let currentCategory = 'all';
+
+    async function loadEquipment() {
+      const grid = document.getElementById('brewing-grid');
+      try {
+        const res = await fetch(URL);
+        const data = await res.json();
+        const items = data.result || [];
+
+        grid.innerHTML = ''; // Remove skeletons
+
+        if (items.length === 0) {
+          document.getElementById('no-products').style.display = 'block';
+          return;
+        }
+
+        items.forEach(item => {
+          const imgUrl = sanityImageUrl(item.image, 600);
+          const badgeHTML = item.badge ? `<span class="product-badge">${item.badge}</span>` : '';
+
+          const card = document.createElement('div');
+          card.className = 'product-card';
+          card.setAttribute('data-category', item.equipmentType);
+          card.style.display = (currentCategory === 'all' || item.equipmentType === currentCategory) ? 'block' : 'none';
+
+          card.innerHTML = `
+              <div class="product-image-container">
+                ${badgeHTML}
+                <img src="${imgUrl}" alt="${item.name}" class="product-image" loading="lazy" />
+              </div>
+              <div class="product-info">
+                <h3 class="product-title">${item.name}</h3>
+                <p class="product-price">R ${item.price.toLocaleString('en-ZA')}</p>
+                <button class="btn-quiz" onclick="addToCart('${item.name.replace(/'/g, "\\'")}', 'R ${item.price}', '${imgUrl}', event)"><a href="#">ADD TO CART</a></button>
+              </div>
+            `;
+          grid.appendChild(card);
+        });
+      } catch (err) {
+        console.error('Fetch failed:', err);
+      }
+    }
+
+    // Filters
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentCategory = tab.getAttribute('data-category');
+
+        const cards = document.querySelectorAll('.product-card');
+        let visibleCount = 0;
+        cards.forEach(card => {
+          const cat = card.getAttribute('data-category');
+          if (currentCategory === 'all' || cat === currentCategory) {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        document.getElementById('no-products').style.display = visibleCount === 0 ? 'block' : 'none';
+      });
+    });
+
+    document.getElementById('subscribe-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      showCustomAlert('Thank you for subscribing!');
+    });
+
+    loadEquipment();
+  </script>
+</body>
+
+</html>

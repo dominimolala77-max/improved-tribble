@@ -27,6 +27,7 @@
       <a href="About.html" class="nav-link">About</a>
       <a href="contact.html" class="nav-link">Contact</a>
       <a href="barista academy.html" class="nav-link">Barista Academy</a>
+      <a href="bakery.html" class="nav-link">Bakery</a>
       <a href="order.html" class="shop-btn">Shop Now</a>
       <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> (<span id="cart-count-nav">0</span>)</a>
     </nav>
@@ -44,7 +45,7 @@
     <div class="hero-content">
       <h1 class="hero-title">SHOP TRUTH</h1>
       <p class="hero-subtitle">The Coffee You Deserve</p>
-       <button class="btn-quiz"><a href="coffee.html">ORDER COFFEE NOW</a></button>
+      <button class="btn-quiz"><a href="coffee.html">ORDER COFFEE NOW</a></button>
     </div>
   </section>
 
@@ -127,7 +128,8 @@
             <h3
               style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin-bottom: 10px; letter-spacing: 1px;">
               BEAN TO CUP</h3>
-            <a href="beans to cup coffee.html" class="btn-primary" style="display: inline-block; padding: 10px 20px; font-size: 0.9rem;">VIEW
+            <a href="beans to cup coffee.html" class="btn-primary"
+              style="display: inline-block; padding: 10px 20px; font-size: 0.9rem;">VIEW
               COLLECTION</a>
           </div>
         </div>
@@ -220,12 +222,13 @@
 
       <form class="subscribe-form">
         <input type="email" placeholder="EMAIL ADDRESS" class="subscribe-input" required />
-           <button type="submit" class="btn-subscribe"><a href="subscribtion.html">SUBSCRIBE</a></button><script>
-                    document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        window.location.href = 'subscribtion.html';
-                    });
-                </script>
+        <button type="submit" class="btn-subscribe"><a href="subscribtion.html">SUBSCRIBE</a></button>
+        <script>
+          document.querySelector('.subscribe-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            window.location.href = 'subscribtion.html';
+          });
+        </script>
       </form>
     </div>
   </section>
@@ -252,7 +255,7 @@
       <div class="footer-links-col">
         <h3 class="footer-heading">NEED HELP?</h3>
         <ul class="footer-links">
-          <li><a href="#">REFUND POLICY</a></li>
+          <li><a href="returns and refunds.html">REFUND POLICY</a></li>
           <li><a href="#">SHIPPING POLICY</a></li>
           <li><a href="contact.html">CONTACT US</a></li>
           <li><a href="Privacy policy.html">PRIVACY POLICY</a></li>
@@ -265,8 +268,8 @@
           <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
           <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="https://api.whatsapp.com/send/?phone=27642072814&text=Hello, I just visited your website, and I’m interested in your products, and services. Could you please assist me with more information? Thank you." class="social-link"><i
-              class="fab fa-whatsapp"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=27642072814&text=Hello, I just visited your website, and I’m interested in your products, and services. Could you please assist me with more information? Thank you."
+            class="social-link"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
 
@@ -274,6 +277,27 @@
   </footer>
 
   <!-- CHAT BOX -->
+  <div id="ai-chat" class="ai-chat-window">
+    <div class="chat-header">
+      <h3><i class="fas fa-robot"></i> TRUTH AI ASSISTANT</h3>
+      <button id="close-chat"><i class="fas fa-times"></i></button>
+    </div>
+    <div id="chat-messages" class="chat-messages">
+      <div class="message bot">
+        WELCOME TO TRUTH. HOW CAN I HELP YOU WITH YOUR COFFEE JOURNEY TODAY?
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <button id="mic-btn" title="Speak to ARthur"><i class="fas fa-microphone"></i></button>
+      <input type="text" id="chat-input" placeholder="Say 'Tell me a coffee recommendation'..." autocomplete="on">
+      <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <div id="chat-widget" class="chat-widget">
+    <i class="fas fa-comment-dots"></i>
+  </div>
+
 
   <!-- Scripts -->
   <script src="script.js"></script>

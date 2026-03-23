@@ -1,28 +1,30 @@
 <!doctype html>
 <html lang="en">
 <style>
-    #countdown-timer {
-      font-size: clamp(2rem, 10vw, 4rem);
-      font-weight: 700;
-      color: var(--accent-gold);
-      margin: 10px 0;
-      font-family: monospace;
-      line-height: 1;
-    }
+  #countdown-timer {
+    font-size: clamp(2rem, 10vw, 4rem);
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin: 10px 0;
+    font-family: monospace;
+    line-height: 1;
+  }
+
+  .timer-container {
+    text-align: center;
+    padding: 30px 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    border-radius: 15px;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 480px) {
     .timer-container {
-      text-align: center;
-      padding: 30px 15px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(201, 169, 98, 0.2);
-      border-radius: 15px;
-      margin-bottom: 30px;
+      padding: 20px 10px;
     }
-    @media (max-width: 480px) {
-      .timer-container {
-        padding: 20px 10px;
-      }
-    }
-  </style>
+  }
+</style>
 
 <head>
   <meta charset="UTF-8" />
@@ -34,45 +36,50 @@
 </head>
 
 <body>
-    <!-- HEADER & NAVIGATION -->
-    <header class="site-header" id="header">
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
-            </a>
-            <a href="index.html" class="logo-text">TRUTH</a>
-        </div>
+  <!-- HEADER & NAVIGATION -->
+  <header class="site-header" id="header">
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
+      </a>
+      <a href="index.html" class="logo-text">TRUTH</a>
+    </div>
 
-        <nav class="nav-links" id="nav-links">
-            <a href="index.html" class="nav-link active">Home</a>
-            <a href="About.html" class="nav-link">About</a>
-            <a href="contact.html" class="nav-link">Contact</a>
-            <a href="barista academy.html" class="nav-link">Barista Academy</a>
-            <a href="order.html" class="shop-btn">Shop Now</a>
-        </nav>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="About.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="barista academy.html" class="nav-link">Barista Academy</a>
+      <a href="order.html" class="shop-btn">Shop Now</a>
+      <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> (<span id="cart-count-nav">0</span>)</a>
+    </nav>
 
-        <div class="mobile-toggle" id="mobile-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </header>
+    <div class="mobile-toggle" id="mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
 
   <section style="padding: 150px var(--section-padding) 100px; min-height: 80vh;">
     <div class="container animate-on-scroll">
       <div class="sub-card">
         <h1 style="color: #fff; font-family: var(--font-heading); margin-bottom: 10px;">COFFEE SUBSCRIPTION</h1>
         <p style="color: var(--text-secondary);">6 Month Multi-Variant Experience</p>
-        
+
         <div class="price-tag">R 1,450.00</div>
-        
+
         <ul style="color: var(--accent-gold); margin-bottom: 30px; line-height: 2;">
-          <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> 6 Months of freshly roasted beans delivered monthly</li>
-          <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> Exclusive access to limited edition roasts</li>
-          <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> Free shipping on all subscription orders</li>
+          <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> 6 Months of freshly
+            roasted beans delivered monthly</li>
+          <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> Exclusive access to
+            limited edition roasts</li>
+          <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 10px;"></i> Free shipping on all
+            subscription orders</li>
         </ul>
 
-        <h3 style="color: #fff; margin-bottom: 10px; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Subscription Terms & Conditions</h3>
+        <h3 style="color: #fff; margin-bottom: 10px; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">
+          Subscription Terms & Conditions</h3>
         <div class="terms-box">
           <p>1. Subscription Period: This is a 6-month recurring service.</p>
           <p>2. Billing: You will be charged the full amount of R 1,450.00 upfront.</p>
@@ -87,67 +94,69 @@
           <span>I have read and agree to the Truth Coffee Roasting Subscription Terms and Conditions.</span>
         </label>
 
-        <button onclick="handleSubscription()" class="btn-primary" style="width: 100%; padding: 20px;">PROCEED TO PAYMENT</button>
-        <p id="error-msg" style="color: #ff4444; margin-top: 15px; display: none; text-align: center;">Please accept the terms to continue.</p>
+        <button onclick="handleSubscription()" class="btn-primary" style="width: 100%; padding: 20px;">PROCEED TO
+          PAYMENT</button>
+        <p id="error-msg" style="color: #ff4444; margin-top: 15px; display: none; text-align: center;">Please accept the
+          terms to continue.</p>
       </div>
     </div>
   </section>
 
-   <footer class="site-footer">
-        <div class="footer-grid">
+  <footer class="site-footer">
+    <div class="footer-grid">
 
-            <div class="footer-brand">
-                <img src="images/OIP.jpg" alt="Truth Coffee" class="footer-logo">
-                <p class="footer-slogan">COFFEE. ROASTED. PROPERLY.</p>
-                <p class="footer-copy">&copy; Truth Coffee Roasting ZA.<br>e-commerce by WBWR</p>
-            </div>
+      <div class="footer-brand">
+        <img src="images/OIP.jpg" alt="Truth Coffee" class="footer-logo">
+        <p class="footer-slogan">COFFEE. ROASTED. PROPERLY.</p>
+        <p class="footer-copy">&copy; Truth Coffee Roasting ZA.<br>e-commerce by WBWR</p>
+      </div>
 
-            <div class="footer-links-col">
-                <h3 class="footer-heading">LINKS</h3>
-                <ul class="footer-links">
-                    <li><a href="order.html">SHOP ONLINE</a></li>
-                    <li><a href="barista academy.html">BECOME A BARISTA</a></li>
-                    <li><a href="About.html">TRUTH COFFEE HQ</a></li>
-                </ul>
-            </div>
+      <div class="footer-links-col">
+        <h3 class="footer-heading">LINKS</h3>
+        <ul class="footer-links">
+          <li><a href="order.html">SHOP ONLINE</a></li>
+          <li><a href="barista academy.html">BECOME A BARISTA</a></li>
+          <li><a href="About.html">TRUTH COFFEE HQ</a></li>
+        </ul>
+      </div>
 
-            <div class="footer-links-col">
-                <h3 class="footer-heading">NEED HELP?</h3>
-                <ul class="footer-links">
-                    <li><a href="#">REFUND POLICY</a></li>
-                    <li><a href="#">SHIPPING POLICY</a></li>
-                    <li><a href="contact.html">CONTACT US</a></li>
-                    <li><a href="#">PRIVACY POLICY</a></li>
-                </ul>
-            </div>
+      <div class="footer-links-col">
+        <h3 class="footer-heading">NEED HELP?</h3>
+        <ul class="footer-links">
+          <li><a href="#">REFUND POLICY</a></li>
+          <li><a href="#">SHIPPING POLICY</a></li>
+          <li><a href="contact.html">CONTACT US</a></li>
+          <li><a href="#">PRIVACY POLICY</a></li>
+        </ul>
+      </div>
 
-            <div class="footer-social-col">
-                <h3 class="footer-heading">FOLLOW US</h3>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="*" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="https://api.whatsapp.com/send/?phone=27642072814&text=Hello, I just visited your website, and I’m interested in your products, and services. Could you please assist me with more information? Thank you."
-                        class="social-link"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-
+      <div class="footer-social-col">
+        <h3 class="footer-heading">FOLLOW US</h3>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="*" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=27642072814&text=Hello, I just visited your website, and I’m interested in your products, and services. Could you please assist me with more information? Thank you."
+            class="social-link"><i class="fab fa-whatsapp"></i></a>
         </div>
-    </footer>
+      </div>
+
+    </div>
+  </footer>
 
   <script src="script.js"></script>
   <script>
     function handleSubscription() {
       const isChecked = document.getElementById('terms-check').checked;
       const errorMsg = document.getElementById('error-msg');
-      
+
       if (!isChecked) {
         errorMsg.style.display = 'block';
         return;
       }
-      
+
       errorMsg.style.display = 'none';
-      
+
       // Add subscription to cart logic
       const subItem = {
         name: '6 Month Coffee Subscription',
@@ -155,7 +164,7 @@
         image: 'images/photo-1611162458324-aae1eb4129a4.avif',
         quantity: 1
       };
-      
+
       let cart = JSON.parse(localStorage.getItem('truth_cart')) || [];
       // Check if already in cart
       const existing = cart.find(item => item.name === subItem.name);
@@ -163,9 +172,10 @@
         cart.push(subItem);
         localStorage.setItem('truth_cart', JSON.stringify(cart));
       }
-      
+
       window.location.href = 'payment checkout.html';
     }
   </script>
 </body>
+
 </html>

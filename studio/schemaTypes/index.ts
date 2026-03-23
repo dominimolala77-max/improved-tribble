@@ -1,10 +1,17 @@
-import { product } from './product'
-import { category } from './category'
-
-// Add any other existing types here...
+import { product }          from './product'
+import { category }         from './category'
+import { aboutPage }        from './aboutPage'
+import { bakeryItem }       from './bakeryItem'
+import { coffeeEssential }  from './coffeeEssential'
+import { beanToCup }        from './beanToCup'
+import { brewingEquipment } from './brewingEquipment'
 
 export const schemaTypes = [
   product,
   category,
-  // ... other schemas
+  aboutPage,
+  bakeryItem,
+  coffeeEssential,
+  beanToCup,
+  brewingEquipment,
 ]

@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Bakery | Truth Coffee Roasting</title>
+    <meta name="description"
+        content="Freshly baked artisan goods at Truth Coffee Roasting. From butter croissants to fudge brownies — baked properly, every day." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/OIP.jpg" type="image/png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* =============================================
+           BAKERY PAGE — SCOPED STYLES
+        ============================================= */
+
+        /* --- Section Banner --- */
+        .bakery-banner {
+            background: linear-gradient(135deg, #1a1008 0%, #0a0a0a 60%, #1f1208 100%);
+            padding: 30px 5%;
+            text-align: center;
+            border-bottom: 1px solid rgba(201, 168, 106, 0.15);
+        }
+
+        .bakery-banner p {
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .bakery-banner p span {
+            color: var(--accent-gold);
+        }
+
+        /* --- Filter Tabs --- */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 40px 5% 0;
+            background: var(--bg-primary);
+        }
+
+        .filter-tab {
+            background: transparent;
+            border: 1px solid rgba(201, 168, 106, 0.3);
+            color: var(--text-secondary);
+            padding: 8px 22px;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: var(--accent-gold);
+            color: #000;
+            border-color: var(--accent-gold);
+        }
+
+        /* --- Bakery Grid Section --- */
+        .bakery-section {
+            padding: 50px 5% 100px;
+            background: var(--bg-primary);
+        }
+
+        .bakery-section-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bakery-section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(201, 168, 106, 0.15);
+        }
+
+        /* --- Bakery Grid --- */
+        .bakery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 24px;
+        }
+
+        /* --- Bakery Card --- */
+        .bakery-card {
+            background: #111;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .bakery-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 168, 106, 0.2);
+        }
+
+        .bakery-card-img-wrap {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            background: #1a1a1a;
+        }
+
+        .bakery-card-img-wrap img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bakery-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-gold);
+            color: #000;
+            font-family: var(--font-heading);
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            z-index: 2;
+        }
+
+        .bakery-badge.vegan {
+            background: #4a6741;
+            color: #fff;
+        }
+
+        .bakery-card-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bakery-card-name {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .bakery-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .bakery-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .bakery-card-price {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+        }
+
+        /* --- Quantity Control --- */
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #1a1a1a;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .qty-control label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-right: 5px;
+            font-family: var(--font-heading);
+        }
+
+        .qty-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .qty-btn:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        .qty-input {
+            width: 30px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            text-align: center;
+            font-size: 0.9rem;
+            -moz-appearance: textfield;
+        }
+
+        .qty-input::-webkit-inner-spin-button,
+        .qty-input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+        }
+
+        .bakery-order-btn {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 12px;
+            font-family: var(--font-heading);
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .bakery-order-btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        /* --- Skeleton Loaders --- */
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.6; }
+        }
+
+        .skeleton {
+            background: #1a1a1a;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .skeleton-img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .skeleton-text {
+            height: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 2px;
+        }
+
+        .skeleton-title { width: 70%; height: 1.2rem; margin-bottom: 1rem; }
+        .skeleton-p1 { width: 100%; }
+        .skeleton-p2 { width: 90%; }
+        .skeleton-p3 { width: 40%; margin-bottom: 2rem; }
+
+        /* --- Section Header Styles (consistent with other pages) --- */
+        .hero {
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            filter: grayscale(0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .bakery-card-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body class="light-theme">
+    <!-- HEADER & NAVIGATION -->
+    <header class="site-header scrolled" id="header" style="background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
+            </a>
+            <a href="index.html" class="logo-text" style="color:#000;">TRUTH</a>
+        </div>
+
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html" class="nav-link" style="color:#000;">Home</a>
+            <a href="About.html" class="nav-link" style="color:#000;">About</a>
+            <a href="contact.html" class="nav-link" style="color:#000;">Contact</a>
+            <a href="barista academy.html" class="nav-link" style="color:#000;">Barista Academy</a>
+            <a href="order.html" class="shop-btn">Shop Now</a>
+            <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> (<span id="cart-count-nav">0</span>)</a>
+        </nav>
+
+        <div class="mobile-toggle" id="mobile-toggle">
+            <span style="background: #000;"></span>
+            <span style="background: #000;"></span>
+            <span style="background: #000;"></span>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="height: 480px; padding-top: 80px;">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">BAKERY</h1>
+            <p class="hero-subtitle">Baked Properly.</p>
+        </div>
+    </section>
+
+    <!-- INFO BANNER -->
+    <div class="bakery-banner">
+        <p>Fresh from the oven every morning — <span>Cape Town's favourite artisan bakes</span> since 2010.</p>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="filter-tabs" id="filter-tabs-container">
+        <button class="filter-tab active" data-category="all">All</button>
+        <button class="filter-tab" data-category="croissant">Croissants</button>
+        <button class="filter-tab" data-category="pastry">Pastries</button>
+        <button class="filter-tab" data-category="cake">Cakes &amp; Slices</button>
+        <button class="filter-tab" data-category="bread">Breads &amp; Bagels</button>
+    </div>
+
+    <!-- BAKERY GRID SECTION -->
+    <section class="bakery-section">
+        <h2 class="bakery-section-title">Today's Bakes</h2>
+
+        <div class="bakery-grid" id="bakery-grid">
+            <!-- SKELETONS -->
+            <div class="bakery-card skeleton-card">
+                <div class="bakery-card-img-wrap skeleton"></div>
+                <div class="bakery-card-body">
+                    <div class="skeleton-text skeleton-title skeleton"></div>
+                    <div class="skeleton-text skeleton-p1 skeleton"></div>
+                    <div class="skeleton-text skeleton-p2 skeleton"></div>
+                    <div class="skeleton-text skeleton-p3 skeleton"></div>
+                </div>
+            </div>
+            <div class="bakery-card skeleton-card">
+                <div class="bakery-card-img-wrap skeleton"></div>
+                <div class="bakery-card-body">
+                    <div class="skeleton-text skeleton-title skeleton"></div>
+                    <div class="skeleton-text skeleton-p1 skeleton"></div>
+                    <div class="skeleton-text skeleton-p2 skeleton"></div>
+                    <div class="skeleton-text skeleton-p3 skeleton"></div>
+                </div>
+            </div>
+            <div class="bakery-card skeleton-card">
+                <div class="bakery-card-img-wrap skeleton"></div>
+                <div class="bakery-card-body">
+                    <div class="skeleton-text skeleton-title skeleton"></div>
+                    <div class="skeleton-text skeleton-p1 skeleton"></div>
+                    <div class="skeleton-text skeleton-p2 skeleton"></div>
+                    <div class="skeleton-text skeleton-p3 skeleton"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- No Items Message -->
+        <div id="no-items-msg" style="display:none; text-align:center; padding:50px; color:var(--text-muted);">
+            <p>No bakery items found in this category.</p>
+        </div>
+    </section>
+
+
+    <!-- SUBSCRIBE SECTION -->
+    <section class="subscribe-section animate-on-scroll">
+        <div class="subscribe-content">
+            <h2 class="subscribe-title">JOIN THE TRUTH COMMUNITY</h2>
+            <p class="subscribe-desc">And get 10% off your first bakery order — plus weekly specials direct to your inbox.</p>
+            <form class="subscribe-form" id="subscribe-form">
+                <input type="email" placeholder="EMAIL ADDRESS" class="subscribe-input" required />
+                <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="images/OIP.jpg" alt="Truth Coffee" class="footer-logo">
+                <p class="footer-slogan">COFFEE. ROASTED. PROPERLY.</p>
+                <p class="footer-copy">&copy; Truth Coffee Roasting ZA.<br>e-commerce by WBWR</p>
+            </div>
+            <div class="footer-links-col">
+                <h3 class="footer-heading">LINKS</h3>
+                <ul class="footer-links">
+                    <li><a href="order.html">SHOP ONLINE</a></li>
+                    <li><a href="barista academy.html">BECOME A BARISTA</a></li>
+                    <li><a href="About.html">TRUTH COFFEE HQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links-col">
+                <h3 class="footer-heading">NEED HELP?</h3>
+                <ul class="footer-links">
+                    <li><a href="#">REFUND POLICY</a></li>
+                    <li><a href="#">SHIPPING POLICY</a></li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                    <li><a href="Privacy policy.html">PRIVACY POLICY</a></li>
+                </ul>
+            </div>
+            <div class="footer-social-col">
+                <h3 class="footer-heading">FOLLOW US</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="https://api.whatsapp.com/send/?phone=27642072814&text=Hello, I just visited your website and I'm interested in your bakery items. Could you please assist me?"
+                        class="social-link"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // ─────────────────────────────────────────────────────────────────
+        // SANITY CONFIG
+        // ─────────────────────────────────────────────────────────────────
+        const SANITY_PROJECT_ID = 'p5bp831g';
+        const SANITY_DATASET = 'production';
+        const SANITY_API_VERSION = '2024-01-01';
+
+        function sanityImageUrl(imageRef, width = 600) {
+            if (!imageRef?.asset?._ref) return '';
+            const ref = imageRef.asset._ref;
+            const parts = ref.split('-');
+            const id = parts[1];
+            const dims = parts[2];
+            const format = parts[3];
+            return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dims}.${format}?w=${width}&auto=format&fit=max`;
+        }
+
+        const QUERY = encodeURIComponent(
+            `*[_type == "bakeryItem" && available == true] | order(sortOrder asc) {
+                _id,
+                name,
+                price,
+                category,
+                description,
+                badge,
+                badgeStyle,
+                image
+            }`
+        );
+
+        const SANITY_URL = `https://${SANITY_PROJECT_ID}.api.sanity.io/v${SANITY_API_VERSION}/data/query/${SANITY_DATASET}?query=${QUERY}`;
+
+        let currentCategory = 'all';
+
+        // ─────────────────────────────────────────────────────────────────
+        // FETCH & RENDER
+        // ─────────────────────────────────────────────────────────────────
+        async function loadBakeryItems() {
+            const grid = document.getElementById('bakery-grid');
+            
+            try {
+                const res = await fetch(SANITY_URL);
+                const data = await res.json();
+                const items = data.result || [];
+
+                // Remove skeletons
+                grid.innerHTML = '';
+
+                if (items.length === 0) {
+                    document.getElementById('no-items-msg').style.display = 'block';
+                    return;
+                }
+
+                items.forEach(item => {
+                    const imgUrl = sanityImageUrl(item.image, 600);
+                    const badgeClass = item.badgeStyle === 'vegan' ? 'bakery-badge vegan' : 'bakery-badge';
+                    const badgeHTML = item.badge ? `<span class="${badgeClass}">${item.badge}</span>` : '';
+                    
+                    const card = document.createElement('div');
+                    card.className = 'bakery-card';
+                    card.setAttribute('data-category', item.category);
+                    card.style.display = (currentCategory === 'all' || item.category === currentCategory) ? 'flex' : 'none';
+
+                    card.innerHTML = `
+                        <div class="bakery-card-img-wrap">
+                            ${badgeHTML}
+                            <img src="${imgUrl}" alt="${item.name}" loading="lazy" />
+                        </div>
+                        <div class="bakery-card-body">
+                            <h3 class="bakery-card-name">${item.name}</h3>
+                            <p class="bakery-card-desc">${item.description || ''}</p>
+                            <div class="bakery-card-footer">
+                                <span class="bakery-card-price">R${item.price}</span>
+                                <div class="qty-control">
+                                    <label>QTY</label>
+                                    <button class="qty-btn" onclick="changeQty(this, -1)">−</button>
+                                    <input type="number" min="0" value="0" class="qty-input">
+                                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                                </div>
+                            </div>
+                            <button class="bakery-order-btn" onclick="handleOrder(this)">ORDER NOW</button>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+            } catch (err) {
+                console.error('Fetch failed:', err);
+                // Fallback or error ui
+            }
+        }
+
+        // ─────────────────────────────────────────────────────────────────
+        // FILTERS
+        // ─────────────────────────────────────────────────────────────────
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                currentCategory = tab.getAttribute('data-category');
+                filterDisplay();
+            });
+        });
+
+        function filterDisplay() {
+            const cards = document.querySelectorAll('.bakery-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (currentCategory === 'all' || category === currentCategory) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            document.getElementById('no-items-msg').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        // ─────────────────────────────────────────────────────────────────
+        // HELPERS
+        // ─────────────────────────────────────────────────────────────────
+        function changeQty(btn, delta) {
+            const input = btn.parentElement.querySelector('.qty-input');
+            const current = parseInt(input.value) || 0;
+            const next = Math.max(0, current + delta);
+            input.value = next;
+        }
+
+        function handleOrder(btn) {
+            const card = btn.closest('.bakery-card');
+            const name = card.querySelector('.bakery-card-name').textContent.trim();
+            const priceText = card.querySelector('.bakery-card-price').textContent.trim();
+            const price = priceText; // Keep as string with 'R' for cart logic compatibility
+            const image = card.querySelector('img').src;
+            const quantityInput = card.querySelector('.qty-input');
+            const quantity = parseInt(quantityInput.value) || 0;
+
+            if (quantity <= 0) {
+                showCustomAlert('Please select at least 1 item.');
+                return;
+            }
+
+            let cart = JSON.parse(localStorage.getItem('truth_cart') || '[]');
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.quantity += quantity;
+            } else {
+                cart.push({ name, price, image, quantity });
+            }
+            localStorage.setItem('truth_cart', JSON.stringify(cart));
+
+            updateCartCount();
+            quantityInput.value = 0;
+            
+            // Show the styled toast matching coffee.html
+            showCustomAlert(`${quantity}x ${name} added to cart!`);
+        }
+
+        function updateCartCount() {
+            const cartCount = document.getElementById('cart-count-nav');
+            if (cartCount) {
+                let cart = JSON.parse(localStorage.getItem('truth_cart') || '[]');
+                const total = cart.reduce((sum, i) => sum + i.quantity, 0);
+                cartCount.textContent = total;
+            }
+        }
+
+
+        // Initialize
+        loadBakeryItems();
+        updateCartCount();
+    </script>
+</body>
+
+</html>

@@ -28,6 +28,7 @@
       <a href="contact.html" class="nav-link">Contact</a>
       <a href="barista academy.html" class="nav-link active">Barista Academy</a>
       <a href="order.html" class="shop-btn">Shop Now</a>
+      <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> (<span id="cart-count-nav">0</span>)</a>
     </nav>
 
     <div class="mobile-toggle" id="mobile-toggle">
@@ -39,7 +40,8 @@
 
   <!-- HERO SECTION -->
   <section class="hero" style="min-height: 800px;padding-top: 100px;">
-    <div class="hero-bg" style="background-image: url('images/4444.png'); filter: brightness(0.6);height: 1600px;"></div>
+    <div class="hero-bg" style="background-image: url('images/4444.png'); filter: brightness(0.6);height: 1600px;">
+    </div>
     <div class="hero-content">
       <h4
         style="color: var(--accent-gold); letter-spacing: 3px; margin-bottom: 20px; font-size: 1.2rem; text-transform: uppercase;">
@@ -98,12 +100,13 @@
 
       <form class="subscribe-form">
         <input type="email" placeholder="EMAIL ADDRESS" class="subscribe-input" required />
-           <button type="submit" class="btn-subscribe"><a href="subscribtion.html">SUBSCRIBE</a></button><script>
-                    document.querySelector('.subscribe-form').addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        window.location.href = 'subscribtion.html';
-                    });
-                </script>
+        <button type="submit" class="btn-subscribe"><a href="subscribtion.html">SUBSCRIBE</a></button>
+        <script>
+          document.querySelector('.subscribe-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            window.location.href = 'subscribtion.html';
+          });
+        </script>
       </form>
     </div>
   </section>
@@ -143,8 +146,8 @@
           <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
           <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="https://api.whatsapp.com/send/?phone=27642072814&text=Hello, I just visited your website, and I’m interested in your products, and services. Could you please assist me with more information? Thank you." class="social-link"><i
-              class="fab fa-whatsapp"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=27642072814&text=Hello, I just visited your website, and I’m interested in your products, and services. Could you please assist me with more information? Thank you."
+            class="social-link"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
 
