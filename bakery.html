@@ -66,6 +66,18 @@
             border-color: var(--accent-gold);
         }
 
+        .filter-label-mobile {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-gold);
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-right: 15px;
+            white-space: nowrap;
+        }
+
         /* --- Bakery Grid Section --- */
         .bakery-section {
             padding: 50px 5% 100px;
@@ -338,6 +350,27 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            
+            .filter-tabs {
+                justify-content: flex-start;
+                padding-top: 25px;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 10px;
+            }
+            
+            .filter-tabs::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .filter-label-mobile {
+                display: flex;
+            }
+            
+            .filter-tab {
+                flex-shrink: 0;
+            }
         }
     </style>
 </head>
@@ -384,6 +417,7 @@
 
     <!-- FILTER TABS -->
     <div class="filter-tabs" id="filter-tabs-container">
+        <div class="filter-label-mobile"><i class="fas fa-sort-amount-down"></i> SORT BY:</div>
         <button class="filter-tab active" data-category="all">All</button>
         <button class="filter-tab" data-category="croissant">Croissants</button>
         <button class="filter-tab" data-category="pastry">Pastries</button>
