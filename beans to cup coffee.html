@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Bean-to-Cup | Truth Coffee Roasting</title>
-  <meta name="description" content="Shop Truth Coffee Roasting's Bean-to-Cup collection — The Manhattan Project range. Bold, full-flavoured blends roasted properly." />
+  <meta name="description"
+    content="Shop Truth Coffee Roasting's Bean-to-Cup collection — The Manhattan Project range. Bold, full-flavoured blends roasted properly." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/OIP.jpg" type="image/png" />
@@ -13,14 +14,23 @@
   <style>
     /* Skeleton pulse animation */
     @keyframes pulse {
-      0%, 100% { opacity: 1;   }
-      50%       { opacity: 0.4; }
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
     }
+
     .skeleton-card .product-image-container {
       min-height: 260px;
       background: #e9e9e9;
       animation: pulse 1.5s ease-in-out infinite;
     }
+
     .skeleton-bar {
       height: 14px;
       background: #e0e0e0;
@@ -40,11 +50,31 @@
       margin-bottom: 6px;
       text-transform: uppercase;
     }
-    .roast-light        { background: #fff3cd; color: #7a5c00; }
-    .roast-medium       { background: #ffe5b4; color: #7a4400; }
-    .roast-medium-dark  { background: #d4a26a; color: #3b1f00; }
-    .roast-dark         { background: #3b1f00; color: #e8c88a; }
-    .roast-decaf        { background: #e0e0e0; color: #444;    }
+
+    .roast-light {
+      background: #fff3cd;
+      color: #7a5c00;
+    }
+
+    .roast-medium {
+      background: #ffe5b4;
+      color: #7a4400;
+    }
+
+    .roast-medium-dark {
+      background: #d4a26a;
+      color: #3b1f00;
+    }
+
+    .roast-dark {
+      background: #3b1f00;
+      color: #e8c88a;
+    }
+
+    .roast-decaf {
+      background: #e0e0e0;
+      color: #444;
+    }
   </style>
 </head>
 
@@ -184,17 +214,17 @@
     // ─────────────────────────────────────────────────────────────────
     // SANITY CONFIG  (must match studio/sanity.config.ts)
     // ─────────────────────────────────────────────────────────────────
-    const SANITY_PROJECT_ID  = 'p5bp831g';
-    const SANITY_DATASET      = 'production';
-    const SANITY_API_VERSION  = '2024-01-01';
+    const SANITY_PROJECT_ID = 'p5bp831g';
+    const SANITY_DATASET = 'production';
+    const SANITY_API_VERSION = '2024-01-01';
 
     // Build a CDN image URL from a Sanity image reference object
     function sanityImageUrl(imageRef, width = 600) {
       if (!imageRef?.asset?._ref) return '';
-      const ref    = imageRef.asset._ref;           // "image-abc123-800x600-jpg"
-      const parts  = ref.split('-');                // ['image','abc123','800x600','jpg']
-      const id     = parts[1];
-      const dims   = parts[2];
+      const ref = imageRef.asset._ref;           // "image-abc123-800x600-jpg"
+      const parts = ref.split('-');                // ['image','abc123','800x600','jpg']
+      const id = parts[1];
+      const dims = parts[2];
       const format = parts[3];
       return `https://cdn.sanity.io/images/${SANITY_PROJECT_ID}/${SANITY_DATASET}/${id}-${dims}.${format}?w=${width}&auto=format&fit=max`;
     }
@@ -216,20 +246,20 @@
 
     // Roast → CSS class mapping
     const roastClass = {
-      'light':       'roast-light',
-      'medium':      'roast-medium',
+      'light': 'roast-light',
+      'medium': 'roast-medium',
       'medium-dark': 'roast-medium-dark',
-      'dark':        'roast-dark',
-      'decaf':       'roast-decaf',
+      'dark': 'roast-dark',
+      'decaf': 'roast-decaf',
     };
 
     // Roast → label
     const roastLabel = {
-      'light':       'Light Roast',
-      'medium':      'Medium Roast',
+      'light': 'Light Roast',
+      'medium': 'Medium Roast',
       'medium-dark': 'Medium-Dark',
-      'dark':        'Dark Roast',
-      'decaf':       'Decaf',
+      'dark': 'Dark Roast',
+      'decaf': 'Decaf',
     };
 
     // ── Render ──────────────────────────────────────────────────────
@@ -237,8 +267,8 @@
       const grid = document.getElementById('b2c-grid');
 
       try {
-        const res      = await fetch(SANITY_URL);
-        const data     = await res.json();
+        const res = await fetch(SANITY_URL);
+        const data = await res.json();
         const products = data.result || [];
 
         // Clear skeletons
@@ -251,7 +281,7 @@
 
         products.forEach(product => {
           const imgUrl = sanityImageUrl(product.image, 600);
-          const price  = typeof product.price === 'number'
+          const price = typeof product.price === 'number'
             ? `R ${product.price.toLocaleString('en-ZA', { minimumFractionDigits: 2 })}`
             : 'Price on request';
 
@@ -298,27 +328,27 @@
         // Static fallback — original 4 products
         const fallback = [
           {
-            name:  'The Manhattan Project - The One & Only',
+            name: 'The Manhattan Project - The One & Only',
             price: 'R 560.00',
-            img:   'images/Truth___Manhattan_Project___Packshot___Mother_of_all_Coffee___Front___FA.webp',
+            img: 'images/Truth___Manhattan_Project___Packshot___Mother_of_all_Coffee___Front___FA.webp',
             badge: 'LIMITED EDITION',
           },
           {
-            name:  'The Manhattan Project - Weapons Of Mass Destruction (WMD)',
+            name: 'The Manhattan Project - Weapons Of Mass Destruction (WMD)',
             price: 'R 560.00',
-            img:   'images/Truth___Manhattan_Project___Packshot___Automatic_Blend___Front___FA.webp',
+            img: 'images/Truth___Manhattan_Project___Packshot___Automatic_Blend___Front___FA.webp',
             badge: '',
           },
           {
-            name:  'The Manhattan Project - Give Peace a Chance (Swiss Water Decaf)',
+            name: 'The Manhattan Project - Give Peace a Chance (Swiss Water Decaf)',
             price: 'R 630.00',
-            img:   'images/Truth___Manhattan_Project___Packshot___Swiss_Water___Front___FA.webp',
+            img: 'images/Truth___Manhattan_Project___Packshot___Swiss_Water___Front___FA.webp',
             badge: '',
           },
           {
-            name:  'The Manhattan Project - Relativity Blend',
+            name: 'The Manhattan Project - Relativity Blend',
             price: 'R 560.00',
-            img:   'images/Truth___Manhattan_Project___Packshot___Brute_Proof___Front___FA.webp',
+            img: 'images/Truth___Manhattan_Project___Packshot___Brute_Proof___Front___FA.webp',
             badge: '',
           },
         ];
@@ -336,7 +366,7 @@
               <h3 class="product-title">${p.name}</h3>
               <p class="product-price">${p.price}</p>
               <button class="btn-quiz"
-                onclick="addToCart('${p.name.replace(/'/g,"\\'")}','${p.price}','${p.img}',event)"
+                onclick="addToCart('${p.name.replace(/'/g, "\\'")}','${p.price}','${p.img}',event)"
               ><a href="#">ADD TO CART</a></button>
             </div>
           `;

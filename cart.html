@@ -2,83 +2,86 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <title>Your Cart | Truth Coffee Roasting</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="images/OIP.jpg" type="image/png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta charset="UTF-8" />
+    <title>Your Cart | Truth Coffee Roasting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/OIP.jpg" type="image/jpeg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
-  <header class="site-header" id="header">
-    <div class="logo-container">
-      <a href="index.html">
-        <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
-      </a>
-      <a href="index.html" class="logo-text">TRUTH</a>
-    </div>
-
-    <nav class="nav-links" id="nav-links">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="About.html" class="nav-link">About</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-      <a href="barista academy.html" class="nav-link">Barista Academy</a>
-      <a href="order.html" class="shop-btn">Shop Now</a>
-      <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> (<span id="cart-count-nav">0</span>)</a>
-    </nav>
-
-    <div class="mobile-toggle" id="mobile-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </header>
-
-  <section style="padding: 150px var(--section-padding) 100px; min-height: 70vh;">
-    <div class="container">
-      <h1 style="color: var(--accent-gold); margin-bottom: 40px; font-family: var(--font-heading);">YOUR SHOPPING CART
-      </h1>
-
-      <div id="cart-items-container">
-        <!-- Items will be injected here by JS -->
-      </div>
-
-      <div id="cart-summary"
-        style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: right;">
-        <h2 style="color: #211e1e;">Total: <span id="cart-total-price">R 0.00</span></h2>
-        <div style="margin-top: 20px;">
-          <button onclick="clearCart()" class="btn-secondary"
-            style="margin-right: 10px;margin-bottom: 20px; background: transparent; border: 1px solid #ff4444; color: #ff4444; padding: 10px 20px; cursor: pointer;">Clear
-            Cart</button>
-          <a href="payment checkout.html" class="btn-primary"
-            style="padding: 12px 30px; text-decoration: none; display: inline-block;">PROCEED TO CHECKOUT</a>
+    <header class="site-header" id="header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
+            </a>
+            <a href="index.html" class="logo-text">TRUTH</a>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <script src="script.js"></script>
-  <script>
-    // Specific logic for the cart page display
-    window.addEventListener('DOMContentLoaded', displayCart);
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="About.html" class="nav-link">About</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="barista academy.html" class="nav-link">Barista Academy</a>
+            <a href="order.html" class="shop-btn">Shop Now</a>
+            <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> (<span
+                    id="cart-count-nav">0</span>)</a>
+        </nav>
 
-    function displayCart() {
-      const cart = JSON.parse(localStorage.getItem('truth_cart')) || [];
-      const container = document.getElementById('cart-items-container');
-      const totalElement = document.getElementById('cart-total-price');
+        <div class="mobile-toggle" id="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
 
-      if (cart.length === 0) {
-        container.innerHTML = '<p style="color: var(--text-muted);">Your cart is empty.</p>';
-        totalElement.innerText = 'R 0.00';
-        return;
-      }
+    <section style="padding: 150px var(--section-padding) 100px; min-height: 70vh;">
+        <div class="container">
+            <h1 style="color: var(--accent-gold); margin-bottom: 40px; font-family: var(--font-heading);">YOUR SHOPPING
+                CART
+            </h1>
 
-      let total = 0;
-      container.innerHTML = cart.map((item, index) => {
-        const itemTotal = parseFloat(item.price.replace('R', '').replace(',', '')) * item.quantity;
-        total += itemTotal;
-        return `
+            <div id="cart-items-container">
+                <!-- Items will be injected here by JS -->
+            </div>
+
+            <div id="cart-summary"
+                style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: right;">
+                <h2 style="color: #211e1e;">Total: <span id="cart-total-price">R 0.00</span></h2>
+                <div style="margin-top: 20px;">
+                    <button onclick="clearCart()" class="btn-secondary"
+                        style="margin-right: 10px;margin-bottom: 20px; background: transparent; border: 1px solid #ff4444; color: #ff4444; padding: 10px 20px; cursor: pointer;">Clear
+                        Cart</button>
+                    <a href="payment checkout.html" class="btn-primary"
+                        style="padding: 12px 30px; text-decoration: none; display: inline-block;">PROCEED TO
+                        CHECKOUT</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Specific logic for the cart page display
+        window.addEventListener('DOMContentLoaded', displayCart);
+
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('truth_cart')) || [];
+            const container = document.getElementById('cart-items-container');
+            const totalElement = document.getElementById('cart-total-price');
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted);">Your cart is empty.</p>';
+                totalElement.innerText = 'R 0.00';
+                return;
+            }
+
+            let total = 0;
+            container.innerHTML = cart.map((item, index) => {
+                const itemTotal = parseFloat(item.price.replace('R', '').replace(',', '')) * item.quantity;
+                total += itemTotal;
+                return `
                 <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 20px; margin-bottom: 10px; border-radius: 8px;">
                     <div style="display: flex; align-items: center; gap: 20px;">
                         <img src="${item.image || 'images/OIP.jpg'}" alt="${item.name}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;" />
@@ -100,36 +103,36 @@
                     </div>
                 </div>
             `;
-      }).join('');
+            }).join('');
 
-      totalElement.innerText = 'R ' + total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      updateNavCount();
-    }
-
-    function changeQuantity(index, delta) {
-      let cart = JSON.parse(localStorage.getItem('truth_cart')) || [];
-      if (cart[index]) {
-        cart[index].quantity += delta;
-        if (cart[index].quantity <= 0) {
-          cart.splice(index, 1);
+            totalElement.innerText = 'R ' + total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            updateNavCount();
         }
-        localStorage.setItem('truth_cart', JSON.stringify(cart));
-        displayCart();
-      }
-    }
 
-    function removeFromCart(index) {
-      let cart = JSON.parse(localStorage.getItem('truth_cart')) || [];
-      cart.splice(index, 1);
-      localStorage.setItem('truth_cart', JSON.stringify(cart));
-      displayCart();
-    }
+        function changeQuantity(index, delta) {
+            let cart = JSON.parse(localStorage.getItem('truth_cart')) || [];
+            if (cart[index]) {
+                cart[index].quantity += delta;
+                if (cart[index].quantity <= 0) {
+                    cart.splice(index, 1);
+                }
+                localStorage.setItem('truth_cart', JSON.stringify(cart));
+                displayCart();
+            }
+        }
 
-    function clearCart() {
-      localStorage.removeItem('truth_cart');
-      displayCart();
-    }
-  </script>
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('truth_cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('truth_cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function clearCart() {
+            localStorage.removeItem('truth_cart');
+            displayCart();
+        }
+    </script>
 </body>
 
 </html>

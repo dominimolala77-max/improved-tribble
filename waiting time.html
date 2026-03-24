@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
 
-<head>  <style>
-    
-    </style>
+<head>
+  <style>
+
+  </style>
   <title>Waiting Time | Truth Coffee Roasting</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
@@ -12,87 +13,100 @@
 </head>
 
 <body>
-  <HEADER & NAVIGATION >
-  <header class="site-header" id="header">
-    <div class="logo-container">
-      <a href="index.html">
-        <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
-      </a>
-      <a href="index.html" class="logo-text">TRUTH</a>
-    </div>
-
-    <nav class="nav-links" id="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="About.html" class="nav-link">About</a>
-      <a href="contact.html" class="nav-link active">Contact</a>
-      <a href="barista academy.html" class="nav-link">Barista Academy</a>
-      <a href="order.html" class="shop-btn">Shop Now</a>
-      <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> (<span id="cart-count-nav">0</span>)</a>
-    </nav>
-
-    <div class="mobile-toggle" id="mobile-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </header>
-
-  <section style="padding: 150px var(--section-padding) 100px; min-height: 70vh;">
-    <div class="container" style="max-width: 800px;">
-      <h1 style="color: var(--accent-gold); margin-bottom: 10px; font-family: var(--font-heading); text-align: center;">ORDER IN PROGRESS</h1>
-      <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 40px; letter-spacing: 1px;">Sit back and relax. We're roasting your perfection.</p>
-
-      <div class="timer-container animate-on-scroll">
-        <h2 style="color: #fff; margin-bottom: 5px; font-size: 1.2rem; letter-spacing: 3px; font-weight: 400; text-transform: uppercase;">Estimated Wait Time</h2>
-        <div id="countdown-timer">05:00</div>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 15px;">Your coffee will be ready when the timer hits zero.</p>
+  <HEADER & NAVIGATION>
+    <header class="site-header" id="header">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
+        </a>
+        <a href="index.html" class="logo-text">TRUTH</a>
       </div>
 
-      <div class="order-summary-box animate-on-scroll" style="animation-delay: 0.2s;">
-        <h2 style="color: var(--accent-gold); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.4rem;">Order Summary</h2>
-        <div id="order-items-container">
-          <!-- Items injected by JS-->
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="About.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+        <a href="barista academy.html" class="nav-link">Barista Academy</a>
+        <a href="order.html" class="shop-btn">Shop Now</a>
+        <a href="cart.html" class="nav-link"><i class="fas fa-shopping-cart"></i> (<span
+            id="cart-count-nav">0</span>)</a>
+      </nav>
+
+      <div class="mobile-toggle" id="mobile-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <section style="padding: 150px var(--section-padding) 100px; min-height: 70vh;">
+      <div class="container" style="max-width: 800px;">
+        <h1
+          style="color: var(--accent-gold); margin-bottom: 10px; font-family: var(--font-heading); text-align: center;">
+          ORDER IN PROGRESS</h1>
+        <p
+          style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 40px; letter-spacing: 1px;">
+          Sit back and relax. We're roasting your perfection.</p>
+
+        <div class="timer-container animate-on-scroll">
+          <h2
+            style="color: #fff; margin-bottom: 5px; font-size: 1.2rem; letter-spacing: 3px; font-weight: 400; text-transform: uppercase;">
+            Estimated Wait Time</h2>
+          <div id="countdown-timer">05:00</div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 15px;">Your coffee will be ready when the
+            timer hits zero.</p>
         </div>
-        <div style="text-align: right; margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px;">
-          <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;">Total Paid</p>
-          <h2 style="color: #fff; font-size: 2rem;"><span id="order-total-price">R 0.00</span></h2>
+
+        <div class="order-summary-box animate-on-scroll" style="animation-delay: 0.2s;">
+          <h2
+            style="color: var(--accent-gold); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; margin-bottom: 25px; font-size: 1.4rem;">
+            Order Summary</h2>
+          <div id="order-items-container">
+            <!-- Items injected by JS-->
+          </div>
+          <div
+            style="text-align: right; margin-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px;">
+            <p
+              style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;">
+              Total Paid</p>
+            <h2 style="color: #fff; font-size: 2rem;"><span id="order-total-price">R 0.00</span></h2>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+          <a href="coffee.html" class="btn-primary" style="text-decoration: none;">ORDER MORE</a>
         </div>
       </div>
-      
-      <div style="text-align: center; margin-top: 50px;">
-         <a href="coffee.html" class="btn-primary" style="text-decoration: none;">ORDER MORE</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <script src="script.js"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      displayOrder();
-      startTimer();
-      // Optional: clear cart after checking out so it behaves like a real app. 
-      // Un-comment the line below if we want to empty the cart once they hit the waiting screen.
-      // localStorage.removeItem('truth_cart'); 
-    });
+    <script src="script.js"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        displayOrder();
+        startTimer();
+        // Optional: clear cart after checking out so it behaves like a real app. 
+        // Un-comment the line below if we want to empty the cart once they hit the waiting screen.
+        // localStorage.removeItem('truth_cart'); 
+      });
 
-    function displayOrder() {
-      // Assuming 'truth_cart' still holds the items they just "processed".//
-      const cart = JSON.parse(localStorage.getItem('truth_cart')) || []; 
-      const container = document.getElementById('order-items-container');
-      const totalElement = document.getElementById('order-total-price');
+      function displayOrder() {
+        // Assuming 'truth_cart' still holds the items they just "processed".//
+        const cart = JSON.parse(localStorage.getItem('truth_cart')) || [];
+        const container = document.getElementById('order-items-container');
+        const totalElement = document.getElementById('order-total-price');
 
-      if (cart.length === 0) {
-        container.innerHTML = '<p style="color: var(--text-muted); text-align:center;">No items found in your recent order.</p>';
-        totalElement.innerText = 'R 0.00';
-        return;
-      }
+        if (cart.length === 0) {
+          container.innerHTML = '<p style="color: var(--text-muted); text-align:center;">No items found in your recent order.</p>';
+          totalElement.innerText = 'R 0.00';
+          return;
+        }
 
-      let total = 0;
-      container.innerHTML = cart.map((item) => {
-        // parse price "R 120.00" -> 120.00
-        const itemTotal = parseFloat(item.price.replace('R', '').replace(',', '')) * item.quantity;
-        total += itemTotal;
-        return `
+        let total = 0;
+        container.innerHTML = cart.map((item) => {
+          // parse price "R 120.00" -> 120.00
+          const itemTotal = parseFloat(item.price.replace('R', '').replace(',', '')) * item.quantity;
+          total += itemTotal;
+          return `
             <div class="order-item-card">
                 <div style="display: flex; align-items: center; gap: 20px;">
                     <img src="${item.image || 'images/OIP.jpg'}" alt="${item.name}" class="order-item-img" />
@@ -106,29 +120,30 @@
                 </div>
             </div>
         `;
-      }).join('');
+        }).join('');
 
-      totalElement.innerText = 'R ' + total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-    }
+        totalElement.innerText = 'R ' + total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
 
-    function startTimer() {
-      let timeLeft = 5 * 60; // 5 minutes in seconds//
-      const timerElement = document.getElementById('countdown-timer');
-      
-      const timerInterval = setInterval(() => {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        
-        timerElement.innerText = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          timerElement.innerText = "READY!";
-          timerElement.style.color = "#4CAF50"; // Green color when ready//
-        }
-        timeLeft -= 1;
-      }, 1000);
-    }
-  </script>
+      function startTimer() {
+        let timeLeft = 5 * 60; // 5 minutes in seconds//
+        const timerElement = document.getElementById('countdown-timer');
+
+        const timerInterval = setInterval(() => {
+          const minutes = Math.floor(timeLeft / 60);
+          const seconds = timeLeft % 60;
+
+          timerElement.innerText = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timerElement.innerText = "READY!";
+            timerElement.style.color = "#4CAF50"; // Green color when ready//
+          }
+          timeLeft -= 1;
+        }, 1000);
+      }
+    </script>
 </body>
+
 </html>

@@ -6,7 +6,7 @@
     <title>Coffee | Truth Coffee Roasting</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="images/OIP.jpg" type="image/png" />
+    <link rel="icon" href="images/OIP.jpg" type="image/jpeg" />
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -17,7 +17,7 @@
     <header class="site-header" id="header">
         <div class="logo-container">
             <a href="index.html">
-                <img src="" alt="Truth Coffee Logo" class="logo-img" />
+                <img src="images/OIP.jpg" alt="Truth Coffee Logo" class="logo-img" />
             </a>
             <a href="index.html" class="logo-text">TRUTH</a>
         </div>
@@ -58,7 +58,7 @@
             <button class="add-to-cart-btn"
                 style="margin-top: 10px; width: 100%; padding: 8px; background-color: #c9a962; color: #1a1a1a; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;"
                 onmouseover="this.style.backgroundColor='#b8944f'" onmouseout="this.style.backgroundColor='#c9a962'"><a
-                    href="waiting time.html">ODER NOW</a></button>
+                    href="waiting time.html">ORDER NOW</a></button>
         </div>
 
         <div class="coffee-card">
@@ -71,7 +71,7 @@
             <button class="add-to-cart-btn"
                 style="margin-top: 10px; width: 100%; padding: 8px; background-color: #c9a962; color: #1a1a1a; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;"
                 onmouseover="this.style.backgroundColor='#b8944f'" onmouseout="this.style.backgroundColor='#c9a962'"><a
-                    href="waiting time.html">ODER NOW</a></button>
+                    href="waiting time.html">ORDER NOW</a></button>
         </div>
 
         <div class="coffee-card">
@@ -84,7 +84,7 @@
             <button class="add-to-cart-btn"
                 style="margin-top: 10px; width: 100%; padding: 8px; background-color: #c9a962; color: #1a1a1a; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;"
                 onmouseover="this.style.backgroundColor='#b8944f'" onmouseout="this.style.backgroundColor='#c9a962'"><a
-                    href="waiting time.html">ODER NOW</a></button>
+                    href="waiting time.html">ORDER NOW</a></button>
         </div>
 
         <div class="coffee-card">
@@ -97,7 +97,7 @@
             <button class="add-to-cart-btn"
                 style="margin-top: 10px; width: 100%; padding: 8px; background-color: #c9a962; color: #1a1a1a; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;"
                 onmouseover="this.style.backgroundColor='#b8944f'" onmouseout="this.style.backgroundColor='#c9a962'"><a
-                    href="waiting time.html">ODER NOW</a></button>
+                    href="waiting time.html">ORDER NOW</a></button>
         </div>
 
         <div class="coffee-card">
@@ -110,7 +110,7 @@
             <button class="add-to-cart-btn"
                 style="margin-top: 10px; width: 100%; padding: 8px; background-color: #c9a962; color: #1a1a1a; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;"
                 onmouseover="this.style.backgroundColor='#b8944f'" onmouseout="this.style.backgroundColor='#c9a962'"><a
-                    href="waiting time.html">ODER NOW</a></button>
+                    href="waiting time.html">ORDER NOW</a></button>
         </div>
 
         <div class="coffee-card">
@@ -123,7 +123,7 @@
             <button class="add-to-cart-btn"
                 style="margin-top: 10px; width: 100%; padding: 8px; background-color: #c9a962; color: #1a1a1a; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;"
                 onmouseover="this.style.backgroundColor='#b8944f'" onmouseout="this.style.backgroundColor='#c9a962'"><a
-                    href="waiting time.html">ODER NOW</a></button>
+                    href="waiting time.html">ORDER NOW</a></button>
         </div>
 
         <div class="coffee-card">
@@ -136,7 +136,7 @@
             <button class="add-to-cart-btn"
                 style="margin-top: 10px; width: 100%; padding: 8px; background-color: #c9a962; color: #1a1a1a; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;"
                 onmouseover="this.style.backgroundColor='#b8944f'" onmouseout="this.style.backgroundColor='#c9a962'"><a
-                    href="waiting time.html">ODER NOW</a></button>
+                    href="waiting time.html">ORDER NOW</a></button>
         </div>
 
         <div class="coffee-card">
@@ -232,7 +232,7 @@
             <script>
                 document.querySelectorAll('.coffee-card').forEach(card => {
                     const button = card.querySelector('.add-to-cart-btn');
-                    if (button && button.innerText.includes('ODER NOW')) {
+                    if (button && (button.innerText.includes('ORDER NOW') || button.innerText.includes('ODER NOW'))) {
                         button.addEventListener('click', (e) => {
                             e.preventDefault();
                             const name = card.childNodes[4].textContent.trim();
