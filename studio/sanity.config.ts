@@ -8,8 +8,8 @@ export default defineConfig({
   name: 'default',
   title: 'my-product-studio',
 
-  projectId: 'p5bp831g',
-  dataset: 'production',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID || 'p5bp831g',
+  dataset: process.env.SANITY_STUDIO_DATASET || 'production',
 
   plugins: [structureTool(), visionTool()],
 

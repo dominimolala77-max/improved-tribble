@@ -1,34 +1,33 @@
 <!doctype html>
 <html lang="en">
-<style>
-  #countdown-timer {
-    font-size: clamp(2rem, 10vw, 4rem);
-    font-weight: 700;
-    color: var(--accent-gold);
-    margin: 10px 0;
-    font-family: monospace;
-    line-height: 1;
-  }
-
-  .timer-container {
-    text-align: center;
-    padding: 30px 15px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(201, 169, 98, 0.2);
-    border-radius: 15px;
-    margin-bottom: 30px;
-  }
-
-  @media (max-width: 480px) {
-    .timer-container {
-      padding: 20px 10px;
-    }
-  }
-</style>
-
 <head>
   <meta charset="UTF-8" />
   <title>Subscription | Truth Coffee Roasting</title>
+  <style>
+    #countdown-timer {
+      font-size: clamp(2rem, 10vw, 4rem);
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin: 10px 0;
+      font-family: monospace;
+      line-height: 1;
+    }
+
+    .timer-container {
+      text-align: center;
+      padding: 30px 15px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(201, 169, 98, 0.2);
+      border-radius: 15px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 480px) {
+      .timer-container {
+        padding: 20px 10px;
+      }
+    }
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/OIP.jpg" type="image/png" />
@@ -145,9 +144,9 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script>
-    function handleSubscription() {
+  <script type="module" src="script.js"></script>
+  <script type="module">
+    window.handleSubscription = function() {
       const isChecked = document.getElementById('terms-check').checked;
       const errorMsg = document.getElementById('error-msg');
 

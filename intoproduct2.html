@@ -141,7 +141,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 
   <style>
     @keyframes pulse {
@@ -161,13 +161,13 @@
     }
   </style>
 
-  <script>
+  <script type="module">
     // ─────────────────────────────────────────────────────────────────
     // SANITY CONFIG
     // projectId and dataset must match your studio/sanity.config.ts
     // ─────────────────────────────────────────────────────────────────
-    const SANITY_PROJECT_ID = 'p5bp831g';
-    const SANITY_DATASET = 'production';
+    const SANITY_PROJECT_ID = window.SANITY_CONFIG.projectId;
+    const SANITY_DATASET = window.SANITY_CONFIG.dataset;
     const SANITY_API_VERSION = '2024-01-01';
 
     // Build a Sanity image URL from a reference object

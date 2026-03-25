@@ -230,7 +230,7 @@
                 style="margin-top: 10px; width: 100%; padding: 8px; background-color: #c9a962; color: #1a1a1a; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; transition: background-color 0.3s;"
                 onmouseover="this.style.backgroundColor='#b8944f'" onmouseout="this.style.backgroundColor='#c9a962'"><a
                     href="waiting time.html">ODER NOW</a></button>
-            <script>
+            <script type="module">
                 document.querySelectorAll('.coffee-card').forEach(card => {
                     const button = card.querySelector('.add-to-cart-btn');
                     if (button && (button.innerText.includes('ORDER NOW') || button.innerText.includes('ODER NOW'))) {
@@ -266,7 +266,7 @@
             <button class="btn-quiz"><a href="cart.html">Proceed</a></button>
         </div>
 
-        <script src="script.js"></script>
+        <script type="module" src="script.js"></script>
 
 
     </div>
@@ -280,7 +280,7 @@
             <form class="subscribe-form">
                 <input type="email" placeholder="EMAIL ADDRESS" class="subscribe-input" required />
                 <button type="submit" class="btn-subscribe"><a href="subscribtion.html">SUBSCRIBE</a></button>
-                <script>
+                <script type="module">
                     document.querySelector('.subscribe-form').addEventListener('submit', function (e) {
                         e.preventDefault();
                         window.location.href = 'subscribtion.html';
@@ -357,7 +357,7 @@
 
 
     <!-- Scripts -->
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 
 </html>

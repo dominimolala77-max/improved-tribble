@@ -209,14 +209,14 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 
-  <script>
+  <script type="module">
     // ─────────────────────────────────────────────────────────────────
     // SANITY CONFIG  (must match studio/sanity.config.ts)
     // ─────────────────────────────────────────────────────────────────
-    const SANITY_PROJECT_ID = 'p5bp831g';
-    const SANITY_DATASET = 'production';
+    const SANITY_PROJECT_ID = window.SANITY_CONFIG.projectId;
+    const SANITY_DATASET = window.SANITY_CONFIG.dataset;
     const SANITY_API_VERSION = '2024-01-01';
 
     // Build a CDN image URL from a Sanity image reference object
