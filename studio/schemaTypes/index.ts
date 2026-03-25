@@ -1,11 +1,11 @@
-import { product }          from './product'
-import { category }         from './category'
-import { aboutPage }        from './aboutPage'
-import { bakeryItem }       from './bakeryItem'
-import { coffeeEssential }  from './coffeeEssential'
-import { beanToCup }        from './beanToCup'
+import { product } from './product'
+import { category } from './category'
+import { aboutPage } from './aboutPage'
+import { bakeryItem } from './bakeryItem'
+import { coffeeEssential } from './coffeeEssential'
+import { beanToCup } from './beanToCup'
 import { brewingEquipment } from './brewingEquipment'
-import { cups }             from './cups'
+import { cups } from './cups'
 
 export const schemaTypes = [
   product,

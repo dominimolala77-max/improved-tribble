@@ -1,8 +1,3 @@
-window.SANITY_CONFIG = {
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
-  dataset: import.meta.env.VITE_SANITY_DATASET
-};
-
 document.addEventListener("DOMContentLoaded", () => {
   // 1. Sticky Header
   const header = document.getElementById("header");
@@ -63,8 +58,8 @@ async function loadSanityProducts() {
   const menuContainer = document.querySelector('.menu-container');
   if (!menuContainer) return;
 
-  const PROJECT_ID = window.SANITY_CONFIG.projectId;
-  const DATASET = window.SANITY_CONFIG.dataset;
+  const PROJECT_ID = 'p5bp831g';
+  const DATASET = 'production';
   const QUERY = encodeURIComponent('*[_type == "product"]{_id, name, price, "imageUrl": image.asset->url, description}');
   const URL = `https://${PROJECT_ID}.api.sanity.io/v2023-01-01/data/query/${DATASET}?query=${QUERY}`;
 
@@ -310,7 +305,4 @@ document.addEventListener("DOMContentLoaded", () => {
     return "THAT'S AN INTRIGUING QUERY. IF YOU'RE INTERESTED IN ROASTED PROPERLY COFFEE, ASKING ABOUT OUR 'MENU' OR 'ACADEMY' IS A GOOD START.";
   }
 });
-// Expose functions to window for HTML onclick attributes
-window.addToCart = addToCart;
-window.updateNavCount = updateNavCount;
-window.showCustomAlert = showCustomAlert;
+

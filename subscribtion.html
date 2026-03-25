@@ -1,8 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Subscription | Truth Coffee Roasting</title>
+
   <style>
     #countdown-timer {
       font-size: clamp(2rem, 10vw, 4rem);
@@ -28,6 +30,7 @@
       }
     }
   </style>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/OIP.jpg" type="image/png" />
@@ -144,9 +147,9 @@
     </div>
   </footer>
 
-  <script type="module" src="script.js"></script>
-  <script type="module">
-    window.handleSubscription = function() {
+  <script src="script.js"></script>
+  <script>
+    function handleSubscription() {
       const isChecked = document.getElementById('terms-check').checked;
       const errorMsg = document.getElementById('error-msg');
 
